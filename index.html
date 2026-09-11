@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Controle Pré-Moldado — Gestão da fábrica à montagem</title>
+<meta name="description" content="Software de gestão para indústrias de pré-moldados: planejamento de produção, cargas, montagem, qualidade e rastreabilidade completa por QR Code.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header" id="topo">
+  <div class="container header-inner">
+    <a href="#topo" class="logo">
+      <span class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 40 40" width="34" height="34">
+          <circle cx="20" cy="20" r="19" fill="none" stroke="#22C55E" stroke-width="2" opacity="0.5"/>
+          <circle cx="20" cy="20" r="13" fill="none" stroke="#22C55E" stroke-width="2"/>
+          <circle cx="20" cy="20" r="4" fill="#22C55E"/>
+        </svg>
+      </span>
+      <span class="logo-text">Controle <strong>Pré-Moldado</strong></span>
+    </a>
+    <nav class="nav-desktop" aria-label="Navegação principal">
+      <a href="#funcionalidades">Funcionalidades</a>
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#planos">Planos</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <a href="#contato" class="btn btn-primary btn-sm nav-cta">Solicitar demonstração</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="nav-mobile" id="navMobile" aria-label="Navegação mobile">
+    <a href="#funcionalidades">Funcionalidades</a>
+    <a href="#como-funciona">Como funciona</a>
+    <a href="#planos">Planos</a>
+    <a href="#contato">Contato</a>
+  </nav>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="container">
+      <div class="hero-inner">
+        <span class="eyebrow">Software para indústrias de pré-moldados</span>
+        <h1>Da fábrica à montagem, <span class="text-accent">cada peça sob controle.</span></h1>
+        <p class="hero-lead">
+          Planeje a produção, organize cargas, acompanhe a montagem em obra e garanta a qualidade —
+          tudo em um só sistema, com rastreabilidade completa por QR Code em cada peça.
+        </p>
+        <div class="hero-actions">
+          <a href="#contato" class="btn btn-primary btn-lg">Solicitar demonstração</a>
+          <a href="#como-funciona" class="btn btn-ghost btn-lg">Ver como funciona</a>
+        </div>
+      </div>
+
+      <!-- Mockup gerado pronto (laptop + celular já com a tela do app desenhada dentro) — sem
+           encaixe por código dessa vez, é uma imagem única. -->
+      <picture class="hero-mockup-pic">
+        <!-- No celular a mesma foto larga deixa os dois aparelhos pequenos demais pra dar pra ver
+             qualquer coisa na tela; essa versão é um recorte mais fechado nas telas (o notebook
+             sangra pela esquerda de propósito) e ocupa a largura toda. -->
+        <source media="(max-width: 720px)" srcset="assets/hero-mockup-mobile.jpg" />
+        <img src="assets/hero-mockup.jpg" class="hero-mockup" alt="Telas do Controle Pré-Moldado no computador e no celular" />
+      </picture>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <strong>Fábrica → Obra</strong>
+          <span>Rastreabilidade ponta a ponta</span>
+        </div>
+        <div class="stat">
+          <strong>QR Code</strong>
+          <span>Etiqueta por peça</span>
+        </div>
+        <div class="stat">
+          <strong>Tempo real</strong>
+          <span>Produção, cargas e montagem</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="logos-strip" aria-hidden="true">
+    <div class="container">
+      <p>Pensado para fábricas de estruturas pré-moldadas de concreto</p>
+    </div>
+  </section>
+
+  <section id="funcionalidades" class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Funcionalidades</span>
+        <h2>Um sistema, todos os processos da pré-moldagem</h2>
+        <p>Cada módulo cobre uma etapa real da operação — sem planilhas soltas, sem informação perdida entre setores.</p>
+      </div>
+      <div class="feature-grid">
+
+        <article class="feature-card">
+          <div class="feature-icon" aria-hidden="true">🏭</div>
+          <h3>Fábrica</h3>
+          <p>Planejamento de concretagem, cronograma de formas, sequência e produção de peças com visão clara do que fabricar e quando.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon" aria-hidden="true">🚚</div>
+          <h3>Cargas</h3>
+          <p>Organização de cargas por obra, cadastro de motoristas e veículos, e acompanhamento das peças em trânsito até o destino.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon" aria-hidden="true">🏗️</div>
+          <h3>Montagem</h3>
+          <p>Controle de montagem por obra e categoria de peça, com confirmação em campo e status atualizado em tempo real.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon" aria-hidden="true">✅</div>
+          <h3>Qualidade</h3>
+          <p>Controle de concretagem, corpos de prova e registro de não conformidades, com histórico completo por peça e por obra.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon" aria-hidden="true">🏷️</div>
+          <h3>Etiquetas &amp; QR Code</h3>
+          <p>Geração de etiqueta individual por peça com QR Code, permitindo rastrear cada item da fábrica até a montagem.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon" aria-hidden="true">📊</div>
+          <h3>Relatórios</h3>
+          <p>Relatórios de produção, cargas, montagem, qualidade e diário de obra, prontos para impressão e auditoria.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon" aria-hidden="true">💼</div>
+          <h3>Vendas</h3>
+          <p>Cadastro de clientes, orçamentos e link público de apresentação para o cliente acompanhar o andamento da obra.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon" aria-hidden="true">📁</div>
+          <h3>Obras</h3>
+          <p>Painel de obras ativas e finalizadas, com visão consolidada de produção, cargas e montagem por obra.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="como-funciona" class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Como funciona</span>
+        <h2>Da peça cadastrada à obra concluída</h2>
+        <p>Um fluxo único que conecta fábrica, transporte, obra e qualidade.</p>
+      </div>
+      <ol class="flow">
+        <li class="flow-step">
+          <span class="flow-num">1</span>
+          <div>
+            <h3>Cadastro da peça</h3>
+            <p>Cada peça pré-moldada é cadastrada com forma, categoria e obra de destino.</p>
+          </div>
+        </li>
+        <li class="flow-step">
+          <span class="flow-num">2</span>
+          <div>
+            <h3>Planejamento &amp; produção</h3>
+            <p>O cronograma de concretagem organiza a fábrica e acompanha a produção em tempo real.</p>
+          </div>
+        </li>
+        <li class="flow-step">
+          <span class="flow-num">3</span>
+          <div>
+            <h3>Etiqueta &amp; carga</h3>
+            <p>A peça pronta recebe etiqueta com QR Code e entra numa carga organizada para a obra.</p>
+          </div>
+        </li>
+        <li class="flow-step">
+          <span class="flow-num">4</span>
+          <div>
+            <h3>Montagem</h3>
+            <p>Em obra, cada peça é confirmada na montagem, mantendo a rastreabilidade completa.</p>
+          </div>
+        </li>
+        <li class="flow-step">
+          <span class="flow-num">5</span>
+          <div>
+            <h3>Qualidade &amp; relatórios</h3>
+            <p>Corpos de prova, não conformidades e relatórios ficam disponíveis para auditoria a qualquer momento.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="planos" class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Planos</span>
+        <h2>Uma proposta sob medida para a sua fábrica</h2>
+        <p>O plano ideal depende do volume de obras e peças da sua operação. Fale com a gente e receba uma proposta personalizada.</p>
+      </div>
+      <div class="pricing-grid">
+
+        <article class="pricing-card">
+          <h3>Essencial</h3>
+          <p class="pricing-desc">Para fábricas iniciando o controle digital da produção.</p>
+          <p class="pricing-value">Sob consulta</p>
+          <ul class="pricing-features">
+            <li>Fábrica &amp; planejamento de produção</li>
+            <li>Cargas e etiquetas com QR Code</li>
+            <li>Montagem por obra</li>
+          </ul>
+          <a href="#contato" class="btn btn-outline btn-block">Solicitar proposta</a>
+        </article>
+
+        <article class="pricing-card pricing-card-highlight">
+          <span class="pricing-badge">Mais procurado</span>
+          <h3>Profissional</h3>
+          <p class="pricing-desc">Operação completa, da fábrica à qualidade.</p>
+          <p class="pricing-value">Sob consulta</p>
+          <ul class="pricing-features">
+            <li>Tudo do plano Essencial</li>
+            <li>Controle de qualidade e não conformidades</li>
+            <li>Relatórios completos e diário de obra</li>
+            <li>Módulo de vendas com link para o cliente</li>
+          </ul>
+          <a href="#contato" class="btn btn-primary btn-block">Solicitar proposta</a>
+        </article>
+
+        <article class="pricing-card">
+          <h3>Empresarial</h3>
+          <p class="pricing-desc">Para redes de fábricas e operações de grande porte.</p>
+          <p class="pricing-value">Sob consulta</p>
+          <ul class="pricing-features">
+            <li>Tudo do plano Profissional</li>
+            <li>Múltiplas unidades e usuários</li>
+            <li>Suporte dedicado</li>
+          </ul>
+          <a href="#contato" class="btn btn-outline btn-block">Solicitar proposta</a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="contato" class="section section-alt">
+    <div class="container contact-inner">
+      <div class="section-head contact-head">
+        <span class="eyebrow">Contato</span>
+        <h2>Peça uma demonstração</h2>
+        <p>Conte um pouco sobre a sua fábrica e a nossa equipe entra em contato com uma proposta personalizada.</p>
+      </div>
+
+      <form class="contact-form" id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" autocomplete="name" required>
+          </div>
+          <div class="form-field">
+            <label for="empresa">Empresa</label>
+            <input type="text" id="empresa" name="empresa" autocomplete="organization">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="telefone">Telefone / WhatsApp</label>
+            <input type="tel" id="telefone" name="telefone" autocomplete="tel" required>
+          </div>
+          <div class="form-field">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" autocomplete="email" required>
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="mensagem">Mensagem</label>
+          <textarea id="mensagem" name="mensagem" rows="4" placeholder="Conte um pouco sobre a sua fábrica: quantas obras, volume de peças, etc."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg btn-block" id="contactSubmit">Enviar</button>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <span class="logo-text">Controle <strong>Pré-Moldado</strong></span>
+      <p>Gestão completa para indústrias de pré-moldados de concreto.</p>
+    </div>
+    <nav class="footer-nav" aria-label="Navegação do rodapé">
+      <a href="#funcionalidades">Funcionalidades</a>
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#planos">Planos</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </div>
+  <div class="container footer-bottom">
+    <p>© <span id="year"></span> Controle Pré-Moldado. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
