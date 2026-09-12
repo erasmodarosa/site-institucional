@@ -3,313 +3,629 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Controle Pré-Moldado — Gestão da fábrica à montagem</title>
-<meta name="description" content="Software de gestão para indústrias de pré-moldados: planejamento de produção, cargas, montagem, qualidade e rastreabilidade completa por QR Code.">
+<title>Controle Pré-Moldado — Da fábrica à montagem, cada peça sob controle</title>
+<meta name="description" content="Software de gestão para indústrias de pré-moldados de concreto. Planejamento de concretagem, cronograma de formas, cargas, montagem em obra e controle de qualidade — com rastreabilidade por QR Code em cada peça.">
+<meta name="theme-color" content="#06080A">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Controle Pré-Moldado — Da fábrica à montagem, cada peça sob controle">
+<meta property="og:description" content="O sistema que acompanha cada peça pré-moldada do projeto à montagem em obra. Rastreabilidade por QR Code, planejamento de concretagem e controle de qualidade num só lugar.">
+<meta property="og:url" content="https://www.controlepremoldado.com.br">
+<meta property="og:image" content="https://www.controlepremoldado.com.br/assets/app-planejamento.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<header class="site-header" id="topo">
-  <div class="container header-inner">
-    <a href="#topo" class="logo">
-      <span class="logo-mark" aria-hidden="true">
-        <svg viewBox="0 0 40 40" width="34" height="34">
-          <circle cx="20" cy="20" r="19" fill="none" stroke="#22C55E" stroke-width="2" opacity="0.5"/>
-          <circle cx="20" cy="20" r="13" fill="none" stroke="#22C55E" stroke-width="2"/>
-          <circle cx="20" cy="20" r="4" fill="#22C55E"/>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ══════════════ NAV ══════════════ -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#topo" class="brand" aria-label="Controle Pré-Moldado — início">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/>
+          <path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/>
         </svg>
       </span>
-      <span class="logo-text">Controle <strong>Pré-Moldado</strong></span>
+      <span class="brand-text">
+        <strong>CONTROLE</strong>
+        <em>PRÉ-MOLDADO</em>
+      </span>
     </a>
-    <nav class="nav-desktop" aria-label="Navegação principal">
-      <a href="#funcionalidades">Funcionalidades</a>
-      <a href="#como-funciona">Como funciona</a>
+
+    <nav class="nav-links" aria-label="Navegação principal">
+      <a href="#modulos">Módulos</a>
+      <a href="#fluxo">Como funciona</a>
+      <a href="#campo">No campo</a>
       <a href="#planos">Planos</a>
-      <a href="#contato">Contato</a>
     </nav>
-    <a href="#contato" class="btn btn-primary btn-sm nav-cta">Solicitar demonstração</a>
-    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+
+    <div class="nav-actions">
+      <a href="#contato" class="btn btn-ghost nav-login">Falar com a gente</a>
+      <a href="#contato" class="btn btn-primary btn-sm">Solicitar demonstração</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
   </div>
-  <nav class="nav-mobile" id="navMobile" aria-label="Navegação mobile">
-    <a href="#funcionalidades">Funcionalidades</a>
-    <a href="#como-funciona">Como funciona</a>
+
+  <div class="nav-drawer" id="navDrawer" hidden>
+    <a href="#modulos">Módulos</a>
+    <a href="#fluxo">Como funciona</a>
+    <a href="#campo">No campo</a>
     <a href="#planos">Planos</a>
-    <a href="#contato">Contato</a>
-  </nav>
+    <a href="#contato" class="btn btn-primary">Solicitar demonstração</a>
+  </div>
 </header>
 
-<main>
+<main id="topo">
 
-  <section class="hero">
-    <div class="hero-glow" aria-hidden="true"></div>
-    <div class="container">
-      <div class="hero-inner">
-        <span class="eyebrow">Software para indústrias de pré-moldados</span>
-        <h1>Da fábrica à montagem, <span class="text-accent">cada peça sob controle.</span></h1>
-        <p class="hero-lead">
-          Planeje a produção, organize cargas, acompanhe a montagem em obra e garanta a qualidade —
-          tudo em um só sistema, com rastreabilidade completa por QR Code em cada peça.
+<!-- ══════════════ HERO ══════════════ -->
+<section class="hero">
+  <div class="hero-aurora" aria-hidden="true">
+    <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
+  </div>
+  <div class="hero-grid-lines" aria-hidden="true"></div>
+
+  <div class="container hero-inner">
+    <div class="hero-copy">
+      <p class="eyebrow reveal" data-delay="0">
+        <span class="dot-live"></span> Software para indústrias de pré-moldados
+      </p>
+
+      <h1 class="hero-title reveal" data-delay="1">
+        Da fábrica à montagem,<br>
+        <span class="grad">cada peça sob controle.</span>
+      </h1>
+
+      <p class="hero-sub reveal" data-delay="2">
+        Planeje a concretagem, organize as cargas, acompanhe a montagem em obra e comprove a
+        qualidade — tudo num só sistema, com <strong>rastreabilidade por QR Code em cada peça</strong>.
+      </p>
+
+      <div class="hero-cta reveal" data-delay="3">
+        <a href="#contato" class="btn btn-primary btn-lg">
+          Solicitar demonstração
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+        <a href="#fluxo" class="btn btn-outline btn-lg">Ver como funciona</a>
+      </div>
+
+      <ul class="hero-trust reveal" data-delay="4">
+        <li><strong>21 dias</strong><span>de teste, sem cartão</span></li>
+        <li><strong>R$ 0</strong><span>de implantação</span></li>
+        <li><strong>Sem</strong><span>fidelidade</span></li>
+      </ul>
+    </div>
+
+    <!-- Telas reais do sistema: Fábrica no desktop + app no celular -->
+    <div class="hero-visual reveal" data-delay="3">
+      <div class="glow-ring" aria-hidden="true"></div>
+
+      <!-- Notebook -->
+      <div class="laptop">
+        <div class="laptop-lid">
+          <div class="laptop-bezel">
+            <span class="laptop-cam" aria-hidden="true"></span>
+            <div class="laptop-view" id="carrossel">
+              <img class="slide on" src="assets/app-desktop-note.png" alt="Tela Fábrica do Controle Pré-Moldado: cada peça da obra numa linha e o status de cada etapa de produção nas colunas" loading="eager" width="1912" height="1075">
+              <img class="slide" src="assets/app-planejamento.png" alt="Tela de Planejamento de Concretagem: grade com os dias da semana e as peças distribuídas por forma" width="1912" height="1075">
+              <img class="slide" src="assets/app-cronograma.png" alt="Tela de Cronograma de Formas: linha do tempo com a ocupação de cada forma da fábrica, dia a dia" width="1917" height="1078">
+              <img class="slide" src="assets/app-concretagem.png" alt="Tela de Concretagem: peças aptas a concretar, peças já concretadas e corpos de prova da carga" width="1917" height="1073">
+              <img class="slide" src="assets/app-carga.png" alt="Tela de Nova Carga: peças em estoque selecionadas pra uma carga, com peso total calculado" width="1917" height="1078">
+              <img class="slide" src="assets/app-3d-obra-exemplo.png" alt="Modelo 3D da obra no sistema, com as peças coloridas pelo status de produção" width="1387" height="940">
+              <span class="screen-gloss" aria-hidden="true"></span>
+            </div>
+            <span class="laptop-chin" aria-hidden="true"></span>
+          </div>
+        </div>
+        <div class="laptop-hinge" aria-hidden="true"></div>
+        <div class="laptop-base" aria-hidden="true"><span class="laptop-lip"></span></div>
+
+        <div class="carrossel-nav" role="tablist" aria-label="Telas do sistema">
+          <button type="button" class="cn-btn on" data-slide="0" role="tab" aria-selected="true">Fábrica</button>
+          <button type="button" class="cn-btn" data-slide="1" role="tab" aria-selected="false">Planejamento</button>
+          <button type="button" class="cn-btn" data-slide="2" role="tab" aria-selected="false">Cronograma</button>
+          <button type="button" class="cn-btn" data-slide="3" role="tab" aria-selected="false">Concretagem</button>
+          <button type="button" class="cn-btn" data-slide="4" role="tab" aria-selected="false">Carga</button>
+          <button type="button" class="cn-btn" data-slide="5" role="tab" aria-selected="false">Modelo 3D</button>
+        </div>
+      </div>
+
+      <!-- Celular -->
+      <div class="phone phone-hero">
+        <span class="phone-btn btn-vol-up" aria-hidden="true"></span>
+        <span class="phone-btn btn-vol-down" aria-hidden="true"></span>
+        <span class="phone-btn btn-power" aria-hidden="true"></span>
+        <div class="phone-screen">
+          <img src="assets/app-screenshot-celular.jpeg" alt="Tela inicial do Controle Pré-Moldado no celular, com atalhos para Fábrica, Carga, Montagem, Qualidade e leitura de peça por QR Code" loading="eager" width="738" height="1600">
+          <span class="phone-island" aria-hidden="true"></span>
+          <span class="screen-gloss" aria-hidden="true"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-hint" aria-hidden="true"><span></span></div>
+</section>
+
+<!-- ══════════════ MARQUEE ══════════════ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Pilares</span><i>◆</i><span>Vigas</span><i>◆</i><span>Lajes alveolares</span><i>◆</i>
+    <span>Placas</span><i>◆</i><span>Painéis</span><i>◆</i><span>Terças</span><i>◆</i>
+    <span>Tesouras</span><i>◆</i><span>Escadas</span><i>◆</i>
+    <span>Pilares</span><i>◆</i><span>Vigas</span><i>◆</i><span>Lajes alveolares</span><i>◆</i>
+    <span>Placas</span><i>◆</i><span>Painéis</span><i>◆</i><span>Terças</span><i>◆</i>
+    <span>Tesouras</span><i>◆</i><span>Escadas</span><i>◆</i>
+  </div>
+</div>
+
+<!-- ══════════════ COMO FUNCIONA / RASTREABILIDADE (scroll fixo) ══════════════ -->
+<section class="section rastreio-scroll" id="fluxo">
+  <div class="rastreio-track">
+    <div class="rastreio-pin">
+      <div class="container">
+        <header class="sec-head reveal">
+          <p class="eyebrow">Como funciona</p>
+          <h2 class="h2">Oito etapas por peça.<br>Uma resposta em dois segundos.</h2>
+          <p class="lead">
+            O sistema segue o mesmo caminho que a peça faz de verdade — do cadastro à montagem em obra.
+            Cada avanço fica registrado com data, hora e responsável, e é isso que transforma a pergunta
+            mais cara da operação numa consulta de dois toques.
+          </p>
+        </header>
+
+        <div class="rt-body">
+          <div class="rt-question">“Cadê a viga <b>V03-7</b>?”</div>
+
+          <ol class="rt-steps" id="rtSteps">
+            <li class="rt-step"><span class="rt-dot"></span><div class="rt-info"><span class="rt-label">Projeto</span><time>02/09 · 08:14 · Marcos</time></div></li>
+            <li class="rt-step"><span class="rt-dot"></span><div class="rt-info"><span class="rt-label">Armação</span><time>03/09 · 10:41 · Equipe A</time></div></li>
+            <li class="rt-step"><span class="rt-dot"></span><div class="rt-info"><span class="rt-label">Concretagem</span><time>04/09 · 07:05 · Lote 12 · 35 MPa</time></div></li>
+            <li class="rt-step"><span class="rt-dot"></span><div class="rt-info"><span class="rt-label">Acabamento</span><time>08/09 · 16:20 · Equipe B</time></div></li>
+            <li class="rt-step"><span class="rt-dot"></span><div class="rt-info"><span class="rt-label">Estoque</span><time>09/09 · 09:02 · Pátio</time></div></li>
+            <li class="rt-step"><span class="rt-dot"></span><div class="rt-info"><span class="rt-label">Carga #341</span><time>10/09 · 06:30 · João · ABC-1D23</time></div></li>
+            <li class="rt-step"><span class="rt-dot"></span><div class="rt-info"><span class="rt-label">Em obra</span><time>10/09 · 11:48 · recebido no canteiro</time></div></li>
+            <li class="rt-step"><span class="rt-dot"></span><div class="rt-info"><span class="rt-label">Montada</span><time>—</time></div></li>
+          </ol>
+        </div>
+      </div>
+      <div class="rt-progress" aria-hidden="true"><span id="rtProgressBar"></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ MODELO 3D ══════════════ -->
+<section class="section modelo3d" id="modelo-3d">
+  <div class="m3d-aurora" aria-hidden="true"></div>
+  <div class="container m3d-grid">
+    <figure class="m3d-palco reveal">
+      <img src="assets/app-3d-obra-exemplo.png" alt="Modelo 3D de uma obra no sistema: galpão completo com lajes, pilares, placas e vigas, cada peça colorida conforme o status" loading="lazy" width="1387" height="940">
+      <figcaption>Modelo 3D · obra real no sistema</figcaption>
+    </figure>
+
+    <div class="m3d-texto">
+      <div class="reveal" data-delay="1">
+        <p class="eyebrow">Modelo 3D</p>
+        <h2 class="h2">A obra inteira colorida pelo que já ficou pronto.</h2>
+        <p class="lead">
+          Importe o modelo da obra e cada peça ganha a cor do seu status real. Em vez de cruzar
+          planilha com projeto, a resposta aparece na forma da própria estrutura — e dá pra
+          filtrar por tipo de peça: só os pilares, só as lajes, só as placas.
         </p>
-        <div class="hero-actions">
-          <a href="#contato" class="btn btn-primary btn-lg">Solicitar demonstração</a>
-          <a href="#como-funciona" class="btn btn-ghost btn-lg">Ver como funciona</a>
+      </div>
+
+      <ul class="m3d-legenda reveal" data-delay="2">
+        <li><span class="pt pendente"></span><b>Pendente</b><i>ainda não concretada</i></li>
+        <li><span class="pt concretada"></span><b>Concretada</b><i>pronta na fábrica</i></li>
+        <li><span class="pt montada"></span><b>Montada</b><i>já instalada em obra</i></li>
+        <li><span class="pt sem"></span><b>Sem peça cadastrada</b><i>está no modelo, fora do cadastro</i></li>
+      </ul>
+
+      <div class="m3d-outras reveal" data-delay="3">
+        <figure>
+          <img src="assets/app-3d-glauton.png" alt="Outro modelo 3D no sistema: estrutura metálica de galpão com peças coloridas por status" loading="lazy" width="1407" height="915">
+          <figcaption>Estrutura de galpão</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/app-3d-acinp.png" alt="Outro modelo 3D no sistema: pórtico de concreto com peças já montadas em verde" loading="lazy" width="1391" height="926">
+          <figcaption>Pórtico com peças montadas</figcaption>
+        </figure>
+      </div>
+
+      <p class="m3d-nota reveal" data-delay="3">
+        Aceita DXF (por camada), IGES/STEP (por nome do sólido) e FBX (por nome do objeto).
+        Roda no navegador e no celular, sem instalar plugin nenhum.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ MÓDULOS (bento) ══════════════ -->
+<section class="section modulos" id="modulos">
+  <div class="container">
+    <header class="sec-head reveal">
+      <p class="eyebrow">Módulos</p>
+      <h2 class="h2">Um sistema, todos os processos<br>da pré-moldagem.</h2>
+      <p class="lead">Cada módulo cobre uma etapa real da operação. Nada de planilha solta entre setores.</p>
+    </header>
+
+    <div class="bento">
+      <article class="b-card b-wide spot reveal">
+        <div class="b-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="M4 20V8l6 4V8l6 4V8l4 3v9"/></svg>
+        </div>
+        <h3>Fábrica</h3>
+        <p>Planejamento de concretagem, cronograma de formas, sequência de produção e a planilha de
+          etapas peça a peça — com o avanço travado quando a etapa anterior não foi concluída.</p>
+        <div class="b-mini" aria-hidden="true">
+          <span class="mini-row"><i class="ok"></i><i class="ok"></i><i class="ok"></i><i class="wip"></i><i></i><i></i></span>
+          <span class="mini-row"><i class="ok"></i><i class="ok"></i><i class="wip"></i><i></i><i></i><i></i></span>
+          <span class="mini-row"><i class="ok"></i><i class="ok"></i><i class="ok"></i><i class="ok"></i><i class="wip"></i><i></i></span>
+        </div>
+      </article>
+
+      <article class="b-card spot reveal" data-delay="1">
+        <div class="b-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 17h4V5H2v12h3"/><path d="M20 17h2v-3.34a4 4 0 0 0-1.17-2.83L19 9h-5v8h1"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+        </div>
+        <h3>Cargas</h3>
+        <p>Carga por obra, motorista e veículo cadastrados, peso total somado e Romaneio em PDF
+          pronto para assinar na entrega.</p>
+      </article>
+
+      <article class="b-card spot reveal" data-delay="2">
+        <div class="b-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M5 8h14"/><path d="M7 21h10"/><path d="M9 8 5 21"/><path d="m15 8 4 13"/></svg>
+        </div>
+        <h3>Montagem</h3>
+        <p>Controle por obra e categoria, confirmação em campo pelo celular e status atualizado
+          para todo mundo no mesmo segundo.</p>
+      </article>
+
+      <article class="b-card spot reveal" data-delay="1">
+        <div class="b-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+        </div>
+        <h3>Qualidade</h3>
+        <p>Concretagem registrada, corpos de prova com data de ruptura calculada, laudos anexados e
+          fluxo completo de não conformidade.</p>
+        <div class="cp-demo" aria-hidden="true">
+          <div class="cp-row"><span>CP 7 dias</span><b class="ok">28,4 MPa</b></div>
+          <div class="cp-row"><span>CP 28 dias</span><b class="ok">36,1 MPa</b></div>
+          <div class="cp-row"><span>Especificado</span><b>35,0 MPa</b></div>
+          <div class="cp-verdict">Aprovado</div>
+        </div>
+      </article>
+
+      <article class="b-card spot reveal" data-delay="2">
+        <div class="b-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/><path d="M14 14h3v3h-3zM18 18h3v3h-3z"/></svg>
+        </div>
+        <h3>Etiquetas &amp; QR</h3>
+        <p>Etiqueta individual por peça, impressão em lote e indicador de qual já foi impressa.</p>
+      </article>
+
+      <article class="b-card b-wide spot reveal" data-delay="2">
+        <div class="b-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Vendas &amp; link do cliente</h3>
+        <p>Clientes, orçamentos e um link público de apresentação com o modelo 3D da obra — e
+          rastreio de quem abriu, quando e de qual aparelho.</p>
+        <div class="b-mini-link" aria-hidden="true">
+          <span class="lnk">controlepremoldado.com.br/c/<b>obra-acinp</b></span>
+          <span class="seen"><i></i> Aberto 3× · hoje 14:22</span>
+        </div>
+      </article>
+
+      <article class="b-card b-wide spot reveal" data-delay="1">
+        <div class="b-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M7 16v-5"/><path d="M12 16V8"/><path d="M17 16v-3"/></svg>
+        </div>
+        <h3>Relatórios</h3>
+        <p>Produção, cargas, montagem, qualidade e diário de obra — em PDF numerado e pronto para
+          auditoria, com o timbre da sua fábrica no cabeçalho.</p>
+        <div class="b-mini-link" aria-hidden="true">
+          <span class="lnk">Relatório de Fabricação · <b>ACINP</b> · 12 pág.</span>
+        </div>
+      </article>
+
+      <article class="b-card b-wide spot reveal" data-delay="2">
+        <div class="b-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9v.01"/><path d="M9 12v.01"/><path d="M9 15v.01"/></svg>
+        </div>
+        <h3>Obras</h3>
+        <p>Painel de obras ativas e finalizadas, com produção, cargas e montagem consolidadas por
+          obra — e o modelo 3D colorido pelo status real de cada peça.</p>
+        <div class="b-mini" aria-hidden="true">
+          <span class="mini-row"><i class="ok"></i><i class="ok"></i><i class="ok"></i><i class="ok"></i><i class="wip"></i><i></i></span>
+          <span class="mini-row"><i class="ok"></i><i class="ok"></i><i class="wip"></i><i></i><i></i><i></i></span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ CAMPO / MOBILE ══════════════ -->
+<section class="section campo" id="campo">
+  <div class="campo-aurora" aria-hidden="true"></div>
+  <div class="container campo-grid">
+    <div class="campo-copy reveal">
+      <p class="eyebrow">No galpão e na obra</p>
+      <h2 class="h2">A fábrica inteira<br>cabe no bolso.</h2>
+      <p class="lead">
+        O mesmo sistema roda no computador do escritório e no celular de quem está com a mão na
+        peça. Instala como aplicativo no Android e no iPhone — e a leitura de QR funciona mesmo
+        onde o Wi-Fi do galpão não chega: a fila sincroniza sozinha quando o sinal volta.
+      </p>
+      <ul class="check-list">
+        <li>Leitura de peça por QR Code, com fila offline</li>
+        <li>Confirmação de montagem direto do canteiro</li>
+        <li>Instalável como app, sem depender de loja</li>
+        <li>Acesso por cargo: cada um vê só o que é dele</li>
+      </ul>
+    </div>
+
+    <div class="campo-visual reveal" data-delay="2">
+      <div class="phone phone-big" data-parallax="0.04">
+        <span class="phone-btn btn-vol-up" aria-hidden="true"></span>
+        <span class="phone-btn btn-vol-down" aria-hidden="true"></span>
+        <span class="phone-btn btn-power" aria-hidden="true"></span>
+        <div class="phone-screen">
+          <img src="assets/app-screenshot-celular.jpeg" alt="Aplicativo Controle Pré-Moldado aberto no celular" loading="lazy" width="738" height="1600">
+          <span class="phone-island" aria-hidden="true"></span>
+          <span class="screen-gloss" aria-hidden="true"></span>
         </div>
       </div>
 
-      <!-- Mockup gerado pronto (laptop + celular já com a tela do app desenhada dentro) — sem
-           encaixe por código dessa vez, é uma imagem única. -->
-      <picture class="hero-mockup-pic">
-        <!-- No celular a mesma foto larga deixa os dois aparelhos pequenos demais pra dar pra ver
-             qualquer coisa na tela; essa versão é um recorte mais fechado nas telas (o notebook
-             sangra pela esquerda de propósito) e ocupa a largura toda. -->
-        <source media="(max-width: 720px)" srcset="assets/hero-mockup-mobile.jpg" />
-        <img src="assets/hero-mockup.jpg" class="hero-mockup" alt="Telas do Controle Pré-Moldado no computador e no celular" />
-      </picture>
+      <!-- Cartão de leitura de QR, animado -->
+      <div class="qr-card" aria-hidden="true">
+        <span class="qr-tag"><i></i> Leitura por QR · funciona offline</span>
 
-      <div class="hero-stats">
-        <div class="stat">
-          <strong>Fábrica → Obra</strong>
-          <span>Rastreabilidade ponta a ponta</span>
+        <div class="qr-main">
+          <div class="qr-box">
+            <span class="qr-scan"></span>
+            <svg viewBox="0 0 48 48" fill="currentColor" aria-hidden="true">
+              <path d="M6 6h12v12H6zM9 9v6h6V9zM30 6h12v12H30zM33 9v6h6V9zM6 30h12v12H6zM9 33v6h6v-6zM24 6h3v6h-3zM24 15h3v6h-3zM30 21h6v3h-6zM39 21h3v3h-3zM24 24h6v3h-6zM33 27h3v3h-3zM39 27h3v6h-3zM24 30h3v12h-3zM30 33h3v3h-3zM36 36h6v3h-6zM30 39h9v3h-9z"/>
+            </svg>
+          </div>
+          <div class="qr-info">
+            <span class="qr-id">V03-7</span>
+            <span class="qr-meta">Viga · 0,20 × 0,60 m · 2.180 kg</span>
+            <span class="qr-obra">Obra ACINP</span>
+          </div>
         </div>
-        <div class="stat">
-          <strong>QR Code</strong>
-          <span>Etiqueta por peça</span>
+
+        <div class="qr-etapas">
+          <i class="feito"></i><i class="feito"></i><i class="feito"></i><i class="feito"></i>
+          <i class="feito"></i><i class="feito"></i><i class="agora"></i><i></i>
         </div>
-        <div class="stat">
-          <strong>Tempo real</strong>
-          <span>Produção, cargas e montagem</span>
+
+        <span class="qr-status">Em obra · aguardando montagem</span>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ══════════════ PLANOS + CALCULADORA ══════════════ -->
+<section class="section planos" id="planos">
+  <div class="container">
+    <header class="sec-head center reveal">
+      <p class="eyebrow">Planos</p>
+      <h2 class="h2">Preço transparente,<br>calculado na sua frente.</h2>
+      <p class="lead">
+        Você paga uma parte fixa por módulo e uma parte que acompanha o quanto a fábrica produz.
+        Sem taxa de implantação, sem fidelidade, sem surpresa na renovação.
+      </p>
+    </header>
+
+    <div class="calc reveal" data-delay="1">
+      <div class="calc-controls">
+        <div class="calc-field">
+          <label for="volume">Volume de concreto por mês
+            <output id="volOut">100 m³</output>
+          </label>
+          <input type="range" id="volume" min="0" max="600" step="10" value="100">
+          <div class="range-scale" aria-hidden="true"><span>0</span><span>150</span><span>300</span><span>450</span><span>600 m³</span></div>
+        </div>
+
+        <div class="mod-list">
+          <label class="mod on">
+            <input type="checkbox" id="mProd" checked disabled>
+            <span class="mod-body">
+              <span class="mod-name">Produção <em>sempre incluso</em></span>
+              <span class="mod-desc">Peças, formas, planejamento, fábrica, cargas, montagem, 3D e QR</span>
+            </span>
+            <span class="mod-price">R$ 199 <i>+ R$ 1,50/m³</i></span>
+          </label>
+
+          <label class="mod">
+            <input type="checkbox" id="mQual" checked>
+            <span class="mod-body">
+              <span class="mod-name">+ Qualidade</span>
+              <span class="mod-desc">Concretagem, corpos de prova, laudos e não conformidade</span>
+            </span>
+            <span class="mod-price">R$ 199 <i>+ R$ 1,50/m³</i></span>
+          </label>
+
+          <label class="mod">
+            <input type="checkbox" id="mCom">
+            <span class="mod-body">
+              <span class="mod-name">+ Comercial</span>
+              <span class="mod-desc">Clientes, orçamentos e link público com rastreio de acesso</span>
+            </span>
+            <span class="mod-price">R$ 179 <i>fixo</i></span>
+          </label>
         </div>
       </div>
+
+      <aside class="calc-result">
+        <span class="cr-label">Sua mensalidade</span>
+        <strong class="cr-value" id="crValue">R$ 877</strong>
+        <span class="cr-detail" id="crDetail">Produção + Qualidade · 100 m³</span>
+
+        <div class="cr-split">
+          <div><span>Implantação</span><b class="free">R$ 0</b></div>
+          <div><span>Fidelidade</span><b class="free">Nenhuma</b></div>
+        </div>
+
+        <label class="cr-annual">
+          <input type="checkbox" id="anual">
+          <span>Pagar o ano à vista <i>(-15%)</i></span>
+        </label>
+
+        <a href="#contato" class="btn btn-primary btn-block">Começar com 21 dias grátis</a>
+        <p class="cr-note">Sem cartão de crédito. Cadastramos junto com você a primeira obra.</p>
+      </aside>
     </div>
-  </section>
 
-  <section class="logos-strip" aria-hidden="true">
-    <div class="container">
-      <p>Pensado para fábricas de estruturas pré-moldadas de concreto</p>
+    <p class="planos-foot reveal" data-delay="2">
+      Fábrica com volume acima de 600 m³/mês? <a href="#contato">Fale com a gente</a> — nesse porte
+      a conta é feita sob medida.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════ FAQ ══════════════ -->
+<section class="section faq">
+  <div class="container narrow">
+    <header class="sec-head reveal">
+      <p class="eyebrow">Dúvidas frequentes</p>
+      <h2 class="h2">O que a gente mais ouve.</h2>
+    </header>
+
+    <div class="faq-list reveal" data-delay="1">
+      <details>
+        <summary>Preciso trocar o sistema financeiro que já uso?</summary>
+        <p>Não. O Controle Pré-Moldado resolve produção, qualidade e entrega — não emite nota fiscal
+          nem boleto. Seu contador e seu ERP continuam como estão.</p>
+      </details>
+      <details>
+        <summary>Minha equipe de fábrica não é boa com computador. Funciona?</summary>
+        <p>A rotina de quem está no galpão é ler o QR da peça e tocar em “Avançar”. As telas de
+          celular foram desenhadas para isso, com botão grande e sem digitação.</p>
+      </details>
+      <details>
+        <summary>E se o galpão não tiver internet?</summary>
+        <p>A leitura de peça funciona offline. O aparelho guarda o que foi feito e sincroniza sozinho
+          quando o sinal volta — ninguém precisa lembrar de apertar nada.</p>
+      </details>
+      <details>
+        <summary>Quanto tempo leva para começar a usar?</summary>
+        <p>No mesmo dia. A gente cadastra junto com você as categorias de peça, as formas da fábrica
+          e a primeira obra. A partir daí é usar.</p>
+      </details>
+      <details>
+        <summary>Meus dados ficam misturados com os de outra fábrica?</summary>
+        <p>Nunca. Cada empresa tem seus dados isolados no banco, com regra de acesso verificada por
+          cargo — e você pode exportar tudo em CSV e PDF quando quiser, inclusive se cancelar.</p>
+      </details>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="funcionalidades" class="section">
-    <div class="container">
-      <div class="section-head">
-        <span class="eyebrow">Funcionalidades</span>
-        <h2>Um sistema, todos os processos da pré-moldagem</h2>
-        <p>Cada módulo cobre uma etapa real da operação — sem planilhas soltas, sem informação perdida entre setores.</p>
-      </div>
-      <div class="feature-grid">
-
-        <article class="feature-card">
-          <div class="feature-icon" aria-hidden="true">🏭</div>
-          <h3>Fábrica</h3>
-          <p>Planejamento de concretagem, cronograma de formas, sequência e produção de peças com visão clara do que fabricar e quando.</p>
-        </article>
-
-        <article class="feature-card">
-          <div class="feature-icon" aria-hidden="true">🚚</div>
-          <h3>Cargas</h3>
-          <p>Organização de cargas por obra, cadastro de motoristas e veículos, e acompanhamento das peças em trânsito até o destino.</p>
-        </article>
-
-        <article class="feature-card">
-          <div class="feature-icon" aria-hidden="true">🏗️</div>
-          <h3>Montagem</h3>
-          <p>Controle de montagem por obra e categoria de peça, com confirmação em campo e status atualizado em tempo real.</p>
-        </article>
-
-        <article class="feature-card">
-          <div class="feature-icon" aria-hidden="true">✅</div>
-          <h3>Qualidade</h3>
-          <p>Controle de concretagem, corpos de prova e registro de não conformidades, com histórico completo por peça e por obra.</p>
-        </article>
-
-        <article class="feature-card">
-          <div class="feature-icon" aria-hidden="true">🏷️</div>
-          <h3>Etiquetas &amp; QR Code</h3>
-          <p>Geração de etiqueta individual por peça com QR Code, permitindo rastrear cada item da fábrica até a montagem.</p>
-        </article>
-
-        <article class="feature-card">
-          <div class="feature-icon" aria-hidden="true">📊</div>
-          <h3>Relatórios</h3>
-          <p>Relatórios de produção, cargas, montagem, qualidade e diário de obra, prontos para impressão e auditoria.</p>
-        </article>
-
-        <article class="feature-card">
-          <div class="feature-icon" aria-hidden="true">💼</div>
-          <h3>Vendas</h3>
-          <p>Cadastro de clientes, orçamentos e link público de apresentação para o cliente acompanhar o andamento da obra.</p>
-        </article>
-
-        <article class="feature-card">
-          <div class="feature-icon" aria-hidden="true">📁</div>
-          <h3>Obras</h3>
-          <p>Painel de obras ativas e finalizadas, com visão consolidada de produção, cargas e montagem por obra.</p>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <section id="como-funciona" class="section section-alt">
-    <div class="container">
-      <div class="section-head">
-        <span class="eyebrow">Como funciona</span>
-        <h2>Da peça cadastrada à obra concluída</h2>
-        <p>Um fluxo único que conecta fábrica, transporte, obra e qualidade.</p>
-      </div>
-      <ol class="flow">
-        <li class="flow-step">
-          <span class="flow-num">1</span>
-          <div>
-            <h3>Cadastro da peça</h3>
-            <p>Cada peça pré-moldada é cadastrada com forma, categoria e obra de destino.</p>
-          </div>
-        </li>
-        <li class="flow-step">
-          <span class="flow-num">2</span>
-          <div>
-            <h3>Planejamento &amp; produção</h3>
-            <p>O cronograma de concretagem organiza a fábrica e acompanha a produção em tempo real.</p>
-          </div>
-        </li>
-        <li class="flow-step">
-          <span class="flow-num">3</span>
-          <div>
-            <h3>Etiqueta &amp; carga</h3>
-            <p>A peça pronta recebe etiqueta com QR Code e entra numa carga organizada para a obra.</p>
-          </div>
-        </li>
-        <li class="flow-step">
-          <span class="flow-num">4</span>
-          <div>
-            <h3>Montagem</h3>
-            <p>Em obra, cada peça é confirmada na montagem, mantendo a rastreabilidade completa.</p>
-          </div>
-        </li>
-        <li class="flow-step">
-          <span class="flow-num">5</span>
-          <div>
-            <h3>Qualidade &amp; relatórios</h3>
-            <p>Corpos de prova, não conformidades e relatórios ficam disponíveis para auditoria a qualquer momento.</p>
-          </div>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <section id="planos" class="section">
-    <div class="container">
-      <div class="section-head">
-        <span class="eyebrow">Planos</span>
-        <h2>Uma proposta sob medida para a sua fábrica</h2>
-        <p>O plano ideal depende do volume de obras e peças da sua operação. Fale com a gente e receba uma proposta personalizada.</p>
-      </div>
-      <div class="pricing-grid">
-
-        <article class="pricing-card">
-          <h3>Essencial</h3>
-          <p class="pricing-desc">Para fábricas iniciando o controle digital da produção.</p>
-          <p class="pricing-value">Sob consulta</p>
-          <ul class="pricing-features">
-            <li>Fábrica &amp; planejamento de produção</li>
-            <li>Cargas e etiquetas com QR Code</li>
-            <li>Montagem por obra</li>
-          </ul>
-          <a href="#contato" class="btn btn-outline btn-block">Solicitar proposta</a>
-        </article>
-
-        <article class="pricing-card pricing-card-highlight">
-          <span class="pricing-badge">Mais procurado</span>
-          <h3>Profissional</h3>
-          <p class="pricing-desc">Operação completa, da fábrica à qualidade.</p>
-          <p class="pricing-value">Sob consulta</p>
-          <ul class="pricing-features">
-            <li>Tudo do plano Essencial</li>
-            <li>Controle de qualidade e não conformidades</li>
-            <li>Relatórios completos e diário de obra</li>
-            <li>Módulo de vendas com link para o cliente</li>
-          </ul>
-          <a href="#contato" class="btn btn-primary btn-block">Solicitar proposta</a>
-        </article>
-
-        <article class="pricing-card">
-          <h3>Empresarial</h3>
-          <p class="pricing-desc">Para redes de fábricas e operações de grande porte.</p>
-          <p class="pricing-value">Sob consulta</p>
-          <ul class="pricing-features">
-            <li>Tudo do plano Profissional</li>
-            <li>Múltiplas unidades e usuários</li>
-            <li>Suporte dedicado</li>
-          </ul>
-          <a href="#contato" class="btn btn-outline btn-block">Solicitar proposta</a>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <section id="contato" class="section section-alt">
-    <div class="container contact-inner">
-      <div class="section-head contact-head">
-        <span class="eyebrow">Contato</span>
-        <h2>Peça uma demonstração</h2>
-        <p>Conte um pouco sobre a sua fábrica e a nossa equipe entra em contato com uma proposta personalizada.</p>
+<!-- ══════════════ CTA / CONTATO ══════════════ -->
+<section class="section contato" id="contato">
+  <div class="container narrow">
+    <div class="cta-card reveal">
+      <div class="cta-glow" aria-hidden="true"></div>
+      <div class="cta-head">
+        <h2 class="h2">Veja rodando com as peças<br>da sua fábrica.</h2>
+        <p class="lead">
+          Deixe seu contato e a gente marca uma demonstração de 30 minutos — com a sua obra, os seus
+          números e a sua realidade na tela.
+        </p>
       </div>
 
-      <form class="contact-form" id="contactForm" novalidate>
-        <div class="form-row">
-          <div class="form-field">
-            <label for="nome">Nome</label>
-            <input type="text" id="nome" name="nome" autocomplete="name" required>
+      <form class="form" id="leadForm" novalidate>
+        <div class="f-row">
+          <div class="f-field">
+            <label for="nome">Seu nome</label>
+            <input type="text" id="nome" name="nome" placeholder="Como podemos te chamar" required autocomplete="name">
           </div>
-          <div class="form-field">
+          <div class="f-field">
             <label for="empresa">Empresa</label>
-            <input type="text" id="empresa" name="empresa" autocomplete="organization">
+            <input type="text" id="empresa" name="empresa" placeholder="Nome da fábrica" required autocomplete="organization">
           </div>
         </div>
-        <div class="form-row">
-          <div class="form-field">
-            <label for="telefone">Telefone / WhatsApp</label>
-            <input type="tel" id="telefone" name="telefone" autocomplete="tel" required>
+        <div class="f-row">
+          <div class="f-field">
+            <label for="contato-campo">Telefone ou e-mail</label>
+            <input type="text" id="contato-campo" name="contato" placeholder="(51) 99999-0000" required autocomplete="tel">
           </div>
-          <div class="form-field">
-            <label for="email">E-mail</label>
-            <input type="email" id="email" name="email" autocomplete="email" required>
+          <div class="f-field">
+            <label for="volume-campo">Volume aproximado por mês</label>
+            <select id="volume-campo" name="volume">
+              <option value="">Prefiro não informar</option>
+              <option value="ate-100">Até 100 m³</option>
+              <option value="100-300">100 a 300 m³</option>
+              <option value="300-600">300 a 600 m³</option>
+              <option value="600+">Acima de 600 m³</option>
+            </select>
           </div>
         </div>
-        <div class="form-field">
-          <label for="mensagem">Mensagem</label>
-          <textarea id="mensagem" name="mensagem" rows="4" placeholder="Conte um pouco sobre a sua fábrica: quantas obras, volume de peças, etc."></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary btn-lg btn-block" id="contactSubmit">Enviar</button>
-        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+
+        <p class="f-error" id="formError" hidden></p>
+
+        <button type="submit" class="btn btn-primary btn-lg btn-block" id="formSubmit">
+          Quero uma demonstração
+        </button>
+        <p class="f-note">Resposta no mesmo dia útil. Sem compromisso e sem cartão.</p>
       </form>
+
+      <div class="form-ok" id="formOk" hidden>
+        <span class="ok-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        </span>
+        <h3>Recebemos seu contato!</h3>
+        <p>A gente entra em contato pelo dado que você deixou, no mesmo dia útil.</p>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
 </main>
 
-<footer class="site-footer">
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer class="footer">
   <div class="container footer-inner">
-    <div class="footer-brand">
-      <span class="logo-text">Controle <strong>Pré-Moldado</strong></span>
-      <p>Gestão completa para indústrias de pré-moldados de concreto.</p>
+    <div class="f-brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/>
+          <path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/>
+        </svg>
+      </span>
+      <span class="brand-text"><strong>CONTROLE</strong><em>PRÉ-MOLDADO</em></span>
+      <p>Gestão de produção, qualidade e entrega para indústrias de pré-moldados de concreto.</p>
     </div>
-    <nav class="footer-nav" aria-label="Navegação do rodapé">
-      <a href="#funcionalidades">Funcionalidades</a>
-      <a href="#como-funciona">Como funciona</a>
-      <a href="#planos">Planos</a>
-      <a href="#contato">Contato</a>
+
+    <nav class="f-links" aria-label="Rodapé">
+      <div>
+        <h4>Produto</h4>
+        <a href="#modulos">Módulos</a>
+        <a href="#fluxo">Como funciona</a>
+        <a href="#campo">No campo</a>
+        <a href="#planos">Planos</a>
+      </div>
+      <div>
+        <h4>Empresa</h4>
+        <a href="#contato">Demonstração</a>
+        <a href="#contato">Falar com a gente</a>
+      </div>
     </nav>
   </div>
+
   <div class="container footer-bottom">
-    <p>© <span id="year"></span> Controle Pré-Moldado. Todos os direitos reservados.</p>
+    <span>© <span id="ano">2026</span> Controle Pré-Moldado</span>
+    <span>controlepremoldado.com.br</span>
   </div>
 </footer>
 
