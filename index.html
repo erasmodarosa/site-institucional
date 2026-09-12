@@ -172,32 +172,68 @@
   <div class="rastreio-track">
     <div class="rastreio-pin">
       <div class="container">
-        <header class="sec-head reveal">
-          <p class="eyebrow">Como funciona</p>
-          <h2 class="h2">Oito etapas por peça.<br>Uma resposta em dois segundos.</h2>
-          <p class="lead">
-            O sistema segue o mesmo caminho que a peça faz de verdade — do cadastro à montagem em obra.
-            Cada avanço fica registrado com data, hora e responsável, e é isso que transforma a pergunta
-            mais cara da operação numa consulta de dois toques.
-          </p>
-        </header>
+        <div class="rt-head-row">
+          <header class="sec-head reveal">
+            <p class="eyebrow">Como funciona</p>
+            <h2 class="h2">Oito etapas por peça.<br>Uma resposta em dois segundos.</h2>
+            <p class="lead">
+              O sistema segue o mesmo caminho que a peça faz de verdade — do cadastro à montagem em obra.
+              Cada avanço fica registrado com data, hora e responsável, e é isso que transforma a pergunta
+              mais cara da operação numa consulta de dois toques.
+            </p>
+          </header>
 
-        <div class="rt-body">
-          <div class="rt-question">“Cadê a viga <b>V03-7</b>?”</div>
+          <!-- Mesmo cartão de leitura de QR da seção "No campo", reaproveitado
+               aqui só pra preencher o vazio ao lado do texto. -->
+          <div class="qr-card qr-card-static reveal" data-delay="1" aria-hidden="true">
+            <span class="qr-tag"><i></i> Leitura por QR · atualiza na hora</span>
 
-          <ol class="rt-steps" id="rtSteps">
-            <li class="rt-step"><span class="rt-dot"></span><div class="rt-info"><span class="rt-label">Projeto</span><time>02/09 · 08:14 · Marcos</time></div></li>
-            <li class="rt-step"><span class="rt-dot"></span><div class="rt-info"><span class="rt-label">Armação</span><time>03/09 · 10:41 · Equipe A</time></div></li>
-            <li class="rt-step"><span class="rt-dot"></span><div class="rt-info"><span class="rt-label">Concretagem</span><time>04/09 · 07:05 · Lote 12 · 35 MPa</time></div></li>
-            <li class="rt-step"><span class="rt-dot"></span><div class="rt-info"><span class="rt-label">Acabamento</span><time>08/09 · 16:20 · Equipe B</time></div></li>
-            <li class="rt-step"><span class="rt-dot"></span><div class="rt-info"><span class="rt-label">Estoque</span><time>09/09 · 09:02 · Pátio</time></div></li>
-            <li class="rt-step"><span class="rt-dot"></span><div class="rt-info"><span class="rt-label">Carga #341</span><time>10/09 · 06:30 · João · ABC-1D23</time></div></li>
-            <li class="rt-step"><span class="rt-dot"></span><div class="rt-info"><span class="rt-label">Em obra</span><time>10/09 · 11:48 · recebido no canteiro</time></div></li>
-            <li class="rt-step"><span class="rt-dot"></span><div class="rt-info"><span class="rt-label">Montada</span><time>—</time></div></li>
-          </ol>
+            <div class="qr-main">
+              <div class="qr-box">
+                <span class="qr-scan"></span>
+                <svg viewBox="0 0 48 48" fill="currentColor" aria-hidden="true">
+                  <path d="M6 6h12v12H6zM9 9v6h6V9zM30 6h12v12H30zM33 9v6h6V9zM6 30h12v12H6zM9 33v6h6v-6zM24 6h3v6h-3zM24 15h3v6h-3zM30 21h6v3h-6zM39 21h3v3h-3zM24 24h6v3h-6zM33 27h3v3h-3zM39 27h3v6h-3zM24 30h3v12h-3zM30 33h3v3h-3zM36 36h6v3h-6zM30 39h9v3h-9z"/>
+                </svg>
+              </div>
+              <div class="qr-info">
+                <span class="qr-id">V03-7</span>
+                <span class="qr-meta">Viga · 0,20 × 0,60 m · 2.180 kg</span>
+                <span class="qr-obra">Obra ACINP</span>
+              </div>
+            </div>
+
+            <div class="qr-etapas">
+              <i class="feito"></i><i class="feito"></i><i class="feito"></i><i class="feito"></i>
+              <i class="feito"></i><i class="feito"></i><i class="agora"></i><i></i>
+            </div>
+
+            <span class="qr-status">Em obra · aguardando montagem</span>
+          </div>
+        </div>
+
+        <div class="rt-stepper">
+          <div class="rt-track">
+            <span class="rt-track-bg" aria-hidden="true"></span>
+            <span class="rt-fill" id="rtFill" aria-hidden="true"></span>
+            <ol class="rt-line" id="rtLine">
+              <li class="rt-node" data-titulo="Projeto" data-desc="02/09 · 08:14 · Marcos"><span class="rt-dot"></span><span class="rt-label">Projeto</span></li>
+              <li class="rt-node" data-titulo="Armação" data-desc="03/09 · 10:41 · Equipe A"><span class="rt-dot"></span><span class="rt-label">Armação</span></li>
+              <li class="rt-node" data-titulo="Concretagem" data-desc="04/09 · 07:05 · Lote 12 · 35 MPa"><span class="rt-dot"></span><span class="rt-label">Concretagem</span></li>
+              <li class="rt-node" data-titulo="Acabamento" data-desc="08/09 · 16:20 · Equipe B"><span class="rt-dot"></span><span class="rt-label">Acabamento</span></li>
+              <li class="rt-node" data-titulo="Estoque" data-desc="09/09 · 09:02 · Pátio"><span class="rt-dot"></span><span class="rt-label">Estoque</span></li>
+              <li class="rt-node" data-titulo="Carga #341" data-desc="10/09 · 06:30 · João · ABC-1D23"><span class="rt-dot"></span><span class="rt-label">Carga</span></li>
+              <li class="rt-node" data-titulo="Em obra" data-desc="10/09 · 11:48 · recebido no canteiro"><span class="rt-dot"></span><span class="rt-label">Em obra</span></li>
+              <li class="rt-node" data-titulo="Montada" data-desc="peça instalada, obra em dia"><span class="rt-dot"></span><span class="rt-label">Montada</span></li>
+            </ol>
+          </div>
+
+          <div class="rt-panel" id="rtPanel">
+            <span class="rt-panel-step" id="rtPanelStep">Etapa 1 de 8</span>
+            <h3 id="rtPanelTitle">Projeto</h3>
+            <p id="rtPanelDesc">02/09 · 08:14 · Marcos</p>
+          </div>
         </div>
       </div>
-      <div class="rt-progress" aria-hidden="true"><span id="rtProgressBar"></span></div>
     </div>
   </div>
 </section>
@@ -363,11 +399,10 @@
       <h2 class="h2">A fábrica inteira<br>cabe no bolso.</h2>
       <p class="lead">
         O mesmo sistema roda no computador do escritório e no celular de quem está com a mão na
-        peça. Instala como aplicativo no Android e no iPhone — e a leitura de QR funciona mesmo
-        onde o Wi-Fi do galpão não chega: a fila sincroniza sozinha quando o sinal volta.
+        peça. Instala como aplicativo no Android e no iPhone, direto da tela inicial.
       </p>
       <ul class="check-list">
-        <li>Leitura de peça por QR Code, com fila offline</li>
+        <li>Leitura de peça por QR Code, direto do celular</li>
         <li>Confirmação de montagem direto do canteiro</li>
         <li>Instalável como app, sem depender de loja</li>
         <li>Acesso por cargo: cada um vê só o que é dele</li>
@@ -388,7 +423,7 @@
 
       <!-- Cartão de leitura de QR, animado -->
       <div class="qr-card" aria-hidden="true">
-        <span class="qr-tag"><i></i> Leitura por QR · funciona offline</span>
+        <span class="qr-tag"><i></i> Leitura por QR · atualiza na hora</span>
 
         <div class="qr-main">
           <div class="qr-box">
@@ -511,11 +546,6 @@
         <summary>Minha equipe de fábrica não é boa com computador. Funciona?</summary>
         <p>A rotina de quem está no galpão é ler o QR da peça e tocar em “Avançar”. As telas de
           celular foram desenhadas para isso, com botão grande e sem digitação.</p>
-      </details>
-      <details>
-        <summary>E se o galpão não tiver internet?</summary>
-        <p>A leitura de peça funciona offline. O aparelho guarda o que foi feito e sincroniza sozinho
-          quando o sinal volta — ninguém precisa lembrar de apertar nada.</p>
       </details>
       <details>
         <summary>Quanto tempo leva para começar a usar?</summary>

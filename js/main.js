@@ -73,16 +73,40 @@
     porRevelar.forEach(function (el) { obs.observe(el); });
   }
 
-  /* ───────────── rastreio: 8 cartões revelando um a um conforme a
-     seção (mais alta que a tela) rola por trás do bloco fixo ───────────── */
+  /* ───────────── rastreio: linha horizontal com os 8 status — uma barra
+     verde anda da esquerda pra direita conforme a seção (mais alta que a
+     tela) rola por trás do bloco fixo, e o painel troca de etapa quando a
+     barra alcança cada nó ───────────── */
   var trilhaRastreio = document.querySelector(".rastreio-track");
-  var passosRastreio = document.querySelectorAll(".rt-step");
-  var barraRastreio = document.getElementById("rtProgressBar");
+  var nosRastreio = document.querySelectorAll(".rt-node");
+  var elFillRastreio = document.getElementById("rtFill");
+  var elPainelStep = document.getElementById("rtPanelStep");
+  var elPainelTitulo = document.getElementById("rtPanelTitle");
+  var elPainelDesc = document.getElementById("rtPanelDesc");
 
-  if (trilhaRastreio && passosRastreio.length) {
+  if (trilhaRastreio && nosRastreio.length) {
+    var totalNos = nosRastreio.length;
+    var ultimoIndiceRastreio = -1;
+
+    function aplicaEtapa(indice) {
+      if (indice === ultimoIndiceRastreio) return;
+      ultimoIndiceRastreio = indice;
+      nosRastreio.forEach(function (el, i) {
+        el.classList.toggle("done", i < indice);
+        el.classList.toggle("active", i === indice);
+      });
+      // A barra pula direto pra posição do nó alcançado (não acompanha o
+      // scroll contínuo) — é a transição do CSS que faz ela "andar" até lá
+      // e acender o ponto, em vez de crescer junto com o dedo na tela.
+      if (elFillRastreio) elFillRastreio.style.setProperty("--rt-progress", String(indice / (totalNos - 1)));
+      var atual = nosRastreio[indice];
+      if (elPainelStep) elPainelStep.textContent = "Etapa " + (indice + 1) + " de " + totalNos;
+      if (elPainelTitulo) elPainelTitulo.textContent = atual.getAttribute("data-titulo");
+      if (elPainelDesc) elPainelDesc.textContent = atual.getAttribute("data-desc");
+    }
+
     if (reduz) {
-      passosRastreio.forEach(function (el) { el.classList.add("in"); });
-      if (barraRastreio) barraRastreio.style.width = "100%";
+      aplicaEtapa(totalNos - 1);
     } else {
       var atualizandoRastreio = false;
       function atualizaRastreio() {
@@ -90,12 +114,8 @@
         var rect = trilhaRastreio.getBoundingClientRect();
         var percursoTotal = rect.height - window.innerHeight;
         var progresso = percursoTotal > 0 ? Math.min(1, Math.max(0, -rect.top / percursoTotal)) : 0;
-        var ativos = Math.min(passosRastreio.length, Math.ceil(progresso * passosRastreio.length));
-        passosRastreio.forEach(function (el, i) {
-          el.classList.toggle("in", i < ativos);
-          el.classList.toggle("current", i === ativos - 1);
-        });
-        if (barraRastreio) barraRastreio.style.width = progresso * 100 + "%";
+        var indice = Math.min(totalNos - 1, Math.floor(progresso * totalNos));
+        aplicaEtapa(indice);
       }
       function agendaRastreio() {
         if (!atualizandoRastreio) {
