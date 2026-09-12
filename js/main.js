@@ -208,11 +208,11 @@
 
   /* ───────────── calculadora de plano ─────────────
      Mesma regra da proposta comercial:
-       Produção  R$199/mês + R$1,50/m³   (sempre incluso)
-       Qualidade R$199/mês + R$1,50/m³   (opcional)
+       Produção  R$249/mês + R$1,50/m³   (sempre incluso)
+       Qualidade R$149/mês + R$1,50/m³   (opcional)
        Comercial R$179/mês fixo          (opcional)
        Anual à vista: -15%                                     */
-  var FIXO = 199, POR_M3 = 1.5, COMERCIAL = 179, DESC_ANUAL = 0.15;
+  var FIXO_PRODUCAO = 249, FIXO_QUALIDADE = 149, POR_M3 = 1.5, COMERCIAL = 179, DESC_ANUAL = 0.15;
 
   var volume = document.getElementById("volume");
   var volOut = document.getElementById("volOut");
@@ -233,10 +233,10 @@
     volume.style.setProperty("--fill", (m3 / parseInt(volume.max, 10) * 100) + "%");
     if (volOut) volOut.textContent = m3 + " m³";
 
-    var total = FIXO + m3 * POR_M3;
+    var total = FIXO_PRODUCAO + m3 * POR_M3;
     var modulos = ["Produção"];
 
-    if (mQual && mQual.checked) { total += FIXO + m3 * POR_M3; modulos.push("Qualidade"); }
+    if (mQual && mQual.checked) { total += FIXO_QUALIDADE + m3 * POR_M3; modulos.push("Qualidade"); }
     if (mCom && mCom.checked) { total += COMERCIAL; modulos.push("Comercial"); }
 
     var comDesconto = anual && anual.checked;
