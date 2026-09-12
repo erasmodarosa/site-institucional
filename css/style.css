@@ -569,7 +569,7 @@ a { color: inherit; text-decoration: none; }
 .m3d-grid {
   position: relative;
   display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
-  gap: clamp(30px, 4.5vw, 60px); align-items: center;
+  gap: clamp(30px, 4.5vw, 60px); align-items: start;
 }
 .m3d-texto { display: grid; gap: 26px; }
 
