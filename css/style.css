@@ -40,7 +40,7 @@
 
   /* --- ritmo --- */
   --pad:    clamp(20px, 4vw, 32px);
-  --sec-y:  clamp(58px, 8vw, 106px);
+  --sec-y:  clamp(36px, 4.5vw, 64px);
   --radius: 16px;
   --radius-lg: 24px;
 }
