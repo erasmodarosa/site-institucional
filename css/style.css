@@ -510,10 +510,15 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 980px) {
   .hero-inner { grid-template-columns: 1fr; }
   .hero-visual .laptop { transform: none; }
-  /* o celular sobe pra dentro do vão do notebook, pra não cobrir os botões
-     de troca de tela do carrossel */
-  .phone-hero { right: 1%; bottom: 14%; width: clamp(108px, 22vw, 150px); }
-  .carrossel-nav { position: relative; z-index: 6; }
+  /* Os botões do carrossel cresceram de 4 pra 6 (Concretagem/Carga entraram
+     depois) e cresceram em altura (mais linhas) — o celular flutuante, que
+     antes só entrava no vão livre abaixo do notebook, passou a cobrir as
+     linhas de baixo dos botões. Aqui ele fica menor e mais alto, e os
+     botões ficam mais compactos (menos texto/respiro), pra sobrar vão de
+     verdade entre os dois em vez de calcular pixel a pixel um encaixe frágil. */
+  .phone-hero { right: 2%; bottom: 30%; width: clamp(82px, 16vw, 120px); }
+  .carrossel-nav { position: relative; z-index: 6; gap: 5px; }
+  .cn-btn { font-size: 0.68rem; padding: 6px 10px; }
 }
 
 /* ═══════════ MARQUEE ═══════════ */
@@ -614,8 +619,13 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 900px) {
   .m3d-grid { grid-template-columns: 1fr; }
   .m3d-palco { max-width: 420px; margin-inline: auto; }
+  /* Mantém legenda e miniaturas em 2 colunas até telas bem estreitas — cada
+     card empilhado (1 coluna) é mais alto que largo à toa, e as duas
+     miniaturas ficando 100% da largura cada uma somavam bastante altura
+     só pra mostrar uma prévia pequena. */
+  .m3d-legenda li { padding: 11px 13px; }
 }
-@media (max-width: 480px) {
+@media (max-width: 340px) {
   .m3d-legenda { grid-template-columns: 1fr; }
   .m3d-outras { grid-template-columns: 1fr; }
 }
@@ -690,7 +700,21 @@ a { color: inherit; text-decoration: none; }
 .b-mini-link .seen i { width: 6px; height: 6px; border-radius: 50%; background: var(--green-bright); animation: pulse 2.4s infinite; }
 
 @media (max-width: 1080px) { .bento { grid-template-columns: repeat(2, 1fr); } .b-tall { grid-row: span 1; } }
-@media (max-width: 620px) { .bento { grid-template-columns: 1fr; } .b-wide { grid-column: span 1; } }
+@media (max-width: 620px) {
+  .bento { grid-template-columns: 1fr; gap: 10px; }
+  .b-wide { grid-column: span 1; }
+  /* 8 cards empilhados em 1 coluna somam bastante altura — aperta o
+     respiro interno de cada um (ícone, títulos, textos e as mini-visuais)
+     sem perder nenhum conteúdo. */
+  .b-card { padding: 18px 18px; }
+  .b-icon { width: 34px; height: 34px; margin-bottom: 12px; }
+  .b-icon svg { width: 17px; height: 17px; }
+  .b-card h3 { font-size: 1.05rem; margin-bottom: 6px; }
+  .b-card p { font-size: 0.87rem; line-height: 1.5; }
+  .b-mini { margin-top: 14px; gap: 5px; }
+  .cp-demo { margin-top: 14px; }
+  .b-mini-link { margin-top: 12px; gap: 6px; }
+}
 
 /* ═══════════ CAMPO / MOBILE ═══════════ */
 
@@ -865,7 +889,7 @@ a { color: inherit; text-decoration: none; }
 .rt-panel p { margin: 0; font-family: var(--mono); font-size: 0.85rem; color: var(--text-2); }
 
 @media (max-width: 860px) {
-  .rastreio-track { height: 360vh; }
+  .rastreio-track { height: 200vh; }
   .rt-track { overflow-x: auto; padding: 8px 4px 14px; }
   .rt-line { min-width: 640px; }
   /* Largura fixa (não left+right) — aqui a linha precisa acompanhar o
