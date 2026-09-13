@@ -517,6 +517,13 @@ a { color: inherit; text-decoration: none; }
      botões ficam mais compactos (menos texto/respiro), pra sobrar vão de
      verdade entre os dois em vez de calcular pixel a pixel um encaixe frágil. */
   .phone-hero { right: 2%; bottom: 30%; width: clamp(82px, 16vw, 120px); }
+  /* Mesma moldura do celular grande (desktop), só que o raio da borda
+     (38px/33px lá) precisa encolher junto com o tamanho — senão, numa
+     caixa bem menor, o canto arredondado passa a dominar a forma inteira
+     e vira uma pílula em vez de um celular. Mesma proporção raio:largura
+     do desktop (38/210 ≈ 18%), aplicada no tamanho novo (~90px). */
+  .phone-hero.phone { border-radius: 17px; }
+  .phone-hero .phone-screen { border-radius: 14px; }
   .carrossel-nav { position: relative; z-index: 6; gap: 5px; }
   .cn-btn { font-size: 0.68rem; padding: 6px 10px; }
 }
