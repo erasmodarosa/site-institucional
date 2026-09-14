@@ -917,6 +917,24 @@ a { color: inherit; text-decoration: none; }
   .rt-track-bg, .rt-fill { left: 9px; right: auto; width: 622px; }
 }
 
+/* .rastreio-pin é height:100vh fixo (o cálculo de progresso da rolagem depende
+   disso) — numa janela BAIXA (notebook com barra de favoritos/abas ocupando
+   espaço, zoom do navegador, etc.), o cabeçalho + stepper + painel juntos
+   passam da altura disponível e vazam por cima da seção seguinte (Modelo 3D)
+   ou da anterior (marquee), dependendo do momento da rolagem — o z-index do
+   .rastreio-pin só resolve pra qual lado o vazamento fica visível, não o
+   vazamento em si. Aqui enxuga o que sobra (esconde o parágrafo e o cartão de
+   QR, só decorativos — aria-hidden) até caber com folga mesmo sem altura de
+   sobra, independente da largura da tela. */
+@media (max-height: 760px) {
+  .rastreio-pin .lead { display: none; }
+  .rastreio-pin .qr-card-static { display: none; }
+  .rastreio-pin .rt-head-row { grid-template-columns: 1fr; }
+  .rastreio-pin .sec-head { margin-bottom: 16px; }
+  .rastreio-pin .rt-stepper { margin-top: 18px; }
+  .rastreio-pin .rt-panel { margin-top: 16px; padding: 16px 20px; }
+}
+
 /* ═══════════ PLANOS / CALCULADORA ═══════════ */
 
 .planos { background: var(--deep); }
