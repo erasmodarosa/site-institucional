@@ -255,15 +255,14 @@
   recalcula();
 
   /* ───────────── formulário de contato ─────────────
-     Grava direto na tabela leads_site do Supabase (política pública
-     só de INSERT — ninguém consegue ler os leads pelo site). */
-  var SUPABASE_URL = "https://cspgbiewlxahnjqehjso.supabase.co";
-  var SUPABASE_KEY = "sb_publishable_pCI6gwGBpDcDvjNQX1ytnA_bFU6IRjX";
+     Não grava nada aqui — só leva pro cadastro do app já com nome, empresa
+     e telefone/e-mail preenchidos (ver app/(auth)/login.tsx, useEffect que
+     lê ?nome=&empresa=&contato= e decide se contato vai pro campo telefone
+     ou e-mail dependendo se tem "@"). */
+  var APP_URL = "https://controle-pre-moldado.vercel.app/login";
 
   var form = document.getElementById("leadForm");
   var erro = document.getElementById("formError");
-  var okBox = document.getElementById("formOk");
-  var botao = document.getElementById("formSubmit");
 
   if (form) {
     form.addEventListener("submit", function (e) {
@@ -273,7 +272,6 @@
       var nome = form.nome.value.trim();
       var empresa = form.empresa.value.trim();
       var contato = form.contato.value.trim();
-      var vol = form.volume.value;
 
       [["nome", nome], ["empresa", empresa], ["contato", contato]].forEach(function (par) {
         form[par[0]].classList.toggle("invalid", !par[1]);
@@ -281,46 +279,19 @@
 
       if (!nome || !empresa || !contato) {
         if (erro) {
-          erro.textContent = "Preencha nome, empresa e um contato para a gente responder.";
+          erro.textContent = "Preencha nome, empresa e um contato pra gente continuar seu cadastro.";
           erro.hidden = false;
         }
         return;
       }
 
-      var rotulos = {
-        "ate-100": "até 100 m³/mês",
-        "100-300": "100 a 300 m³/mês",
-        "300-600": "300 a 600 m³/mês",
-        "600+": "acima de 600 m³/mês"
-      };
-      var contatoFinal = vol && rotulos[vol] ? contato + " — " + rotulos[vol] : contato;
-
-      botao.disabled = true;
-      botao.textContent = "Enviando...";
-
-      fetch(SUPABASE_URL + "/rest/v1/leads_site", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          apikey: SUPABASE_KEY,
-          Authorization: "Bearer " + SUPABASE_KEY,
-          Prefer: "return=minimal"
-        },
-        body: JSON.stringify({ nome: nome, empresa: empresa, contato: contatoFinal })
-      })
-        .then(function (res) {
-          if (!res.ok) throw new Error("falha no envio");
-          form.hidden = true;
-          if (okBox) okBox.hidden = false;
-        })
-        .catch(function () {
-          if (erro) {
-            erro.textContent = "Não conseguimos enviar agora. Tente de novo em instantes, ou chame a gente no WhatsApp.";
-            erro.hidden = false;
-          }
-          botao.disabled = false;
-          botao.textContent = "Quero uma demonstração";
-        });
+      var params = new URLSearchParams({
+        cadastro: "1",
+        nome: nome,
+        empresa: empresa,
+        contato: contato
+      });
+      window.location.href = APP_URL + "?" + params.toString();
     });
   }
 })();
