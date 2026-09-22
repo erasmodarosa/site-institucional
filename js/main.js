@@ -259,7 +259,15 @@
      e telefone/e-mail preenchidos (ver app/(auth)/login.tsx, useEffect que
      lê ?nome=&empresa=&contato= e decide se contato vai pro campo telefone
      ou e-mail dependendo se tem "@"). */
-  var APP_URL = "https://controle-pre-moldado.vercel.app/login";
+  /* Endereço do app: em produção, o Vercel; abrindo o site em localhost (teste local), o app
+     local na porta 8082 — assim dá pra testar o cadastro com o código que ainda não foi publicado. */
+  var APP_PROD = "https://controle-pre-moldado.vercel.app";
+  var APP_URL = /^(localhost|127.0.0.1)$/.test(location.hostname) ? "http://localhost:8082" : APP_PROD;
+  if (APP_URL !== APP_PROD) {
+    document.querySelectorAll('a[href^="' + APP_PROD + '"]').forEach(function (a) {
+      a.href = a.href.replace(APP_PROD, APP_URL);
+    });
+  }
 
   var form = document.getElementById("leadForm");
   var erro = document.getElementById("formError");
@@ -291,7 +299,7 @@
         empresa: empresa,
         contato: contato
       });
-      window.location.href = APP_URL + "?" + params.toString();
+      window.location.href = APP_URL + "/login?" + params.toString();
     });
   }
 })();
