@@ -180,7 +180,7 @@ a { color: inherit; text-decoration: none; }
 
 .nav {
   position: fixed; inset: 0 0 auto 0; z-index: 50;
-  padding-block: 14px;
+  padding-block: 8px;
   transition: background .3s, border-color .3s, padding .3s, backdrop-filter .3s;
   border-bottom: 1px solid transparent;
 }
@@ -188,7 +188,7 @@ a { color: inherit; text-decoration: none; }
   background: rgba(6, 8, 10, .72);
   backdrop-filter: blur(14px) saturate(140%);
   border-bottom-color: var(--line);
-  padding-block: 9px;
+  padding-block: 4px;
 }
 .nav-inner {
   width: min(1720px, 94vw); margin-inline: auto; padding-inline: var(--pad);
@@ -197,22 +197,23 @@ a { color: inherit; text-decoration: none; }
 
 .brand { display: inline-flex; align-items: center; gap: 11px; flex: none; }
 .brand-mark {
-  width: 34px; height: 34px; flex: none;
+  width: 88px; height: 88px; flex: none;
   display: grid; place-items: center;
-  border-radius: 10px;
-  background: linear-gradient(150deg, var(--green-bright), var(--green-deep));
-  color: #06140B;
-  box-shadow: 0 4px 14px -4px rgba(34,197,94,.6);
 }
-.brand-mark svg { width: 19px; height: 19px; }
+@media (max-width: 520px) {
+  .brand-mark { width: 64px; height: 64px; }
+  .brand-text strong { font-size: 1.15rem; }
+  .brand-text em { font-size: 0.66rem; margin-top: 4px; }
+}
+.brand-mark img { width: 100%; height: 100%; object-fit: contain; display: block; }
 .brand-text { display: flex; flex-direction: column; line-height: 1; }
 .brand-text strong {
-  font-family: var(--display); font-weight: 800; font-size: 0.95rem;
+  font-family: var(--display); font-weight: 800; font-size: 1.75rem;
   letter-spacing: 0.02em; color: var(--text);
 }
 .brand-text em {
   font-family: var(--mono); font-style: normal;
-  font-size: 0.58rem; letter-spacing: 0.22em; color: var(--green-bright); margin-top: 3px;
+  font-size: 0.98rem; letter-spacing: 0.2em; color: var(--green-bright); margin-top: 6px;
 }
 
 .nav-links { display: flex; gap: 26px; margin-left: auto; }
@@ -1118,8 +1119,8 @@ input[type="range"]::-moz-range-thumb {
 
 .footer { position: relative; z-index: 2; border-top: 1px solid var(--line); background: var(--deep); padding-top: clamp(44px, 6vw, 68px); }
 .footer-inner { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 40px; padding-bottom: 40px; }
-.f-brand .brand-mark { margin-bottom: 14px; }
-.f-brand .brand-text { display: flex; flex-direction: column; margin-bottom: 14px; }
+.f-brand-linha { display: flex; align-items: center; gap: 11px; margin-bottom: 14px; }
+.f-brand .brand-text { display: flex; flex-direction: column; }
 .f-brand p { margin: 0; color: var(--text-3); font-size: 0.9rem; max-width: 42ch; }
 
 .f-links { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
