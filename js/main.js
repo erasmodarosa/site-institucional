@@ -261,7 +261,7 @@
      ou e-mail dependendo se tem "@"). */
   /* Endereço do app: em produção, o Vercel; abrindo o site em localhost (teste local), o app
      local na porta 8082 — assim dá pra testar o cadastro com o código que ainda não foi publicado. */
-  var APP_PROD = "https://controle-pre-moldado.vercel.app";
+  var APP_PROD = "https://sistema.controlepremoldado.com.br";
   var APP_URL = /^(localhost|127.0.0.1)$/.test(location.hostname) ? "http://localhost:8082" : APP_PROD;
   if (APP_URL !== APP_PROD) {
     document.querySelectorAll('a[href^="' + APP_PROD + '"]').forEach(function (a) {
