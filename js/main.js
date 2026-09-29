@@ -293,6 +293,20 @@
         return;
       }
 
+      // "Contato" aceita telefone OU e-mail — valida só o formato geral (dígitos suficientes pra
+      // parecer telefone, ou tem "@" com algo depois pra parecer e-mail), sem regra rígida demais
+      // que rejeite um número/e-mail real por formatação diferente.
+      var pareceTelefone = contato.replace(/\D/g, "").length >= 10;
+      var pareceEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contato);
+      if (!pareceTelefone && !pareceEmail) {
+        form.contato.classList.add("invalid");
+        if (erro) {
+          erro.textContent = "Informe um telefone com DDD ou um e-mail válido em \"Contato\".";
+          erro.hidden = false;
+        }
+        return;
+      }
+
       var params = new URLSearchParams({
         cadastro: "1",
         nome: nome,
