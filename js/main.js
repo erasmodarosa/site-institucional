@@ -307,13 +307,15 @@
         return;
       }
 
-      var params = new URLSearchParams({
-        cadastro: "1",
-        nome: nome,
-        empresa: empresa,
-        contato: contato
-      });
-      window.location.href = APP_URL + "/login?" + params.toString();
+      // "cadastro=1" vai na query string normal (não é dado sensível, só controla a aba). Nome e
+      // contato vão no fragmento (depois do #) em vez da query string — o navegador NUNCA manda o
+      // fragmento pro servidor (não aparece em log nenhum) e ele também não vai no cabeçalho
+      // Referer ao trocar de página, então não vaza pra nenhum script de terceiro que esteja na
+      // tela de login. Continua lido pelo app (ver login.tsx) porque o próprio navegador entrega
+      // o fragmento pro JavaScript da página de destino. "Empresa" fica de fora: o cadastro do
+      // app pede CNPJ primeiro e preenche o nome da empresa sozinho a partir dele.
+      var dadosSensiveis = new URLSearchParams({ nome: nome, contato: contato });
+      window.location.href = APP_URL + "/login?cadastro=1#" + dadosSensiveis.toString();
     });
   }
 })();
