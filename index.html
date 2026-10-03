@@ -53,7 +53,7 @@
     </nav>
 
     <div class="nav-actions">
-      <a href="#contato" class="btn btn-ghost nav-login">Falar com a gente</a>
+      <a href="#contato" class="btn btn-ghost nav-login" data-abrir-contato>Falar com a gente</a>
       <a href="https://sistema.controlepremoldado.com.br/login" class="btn btn-outline btn-sm nav-enter">Entrar</a>
       <a href="https://sistema.controlepremoldado.com.br/login?cadastro=1" class="btn btn-primary btn-sm">Testar agora</a>
       <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
@@ -106,7 +106,7 @@
       </div>
 
       <ul class="hero-trust reveal" data-delay="4">
-        <li><strong>21 dias</strong><span>de teste, sem cartão</span></li>
+        <li><strong>14 dias</strong><span>de teste, sem cartão</span></li>
         <li><strong>R$ 0</strong><span>de implantação</span></li>
         <li><strong>Sem</strong><span>fidelidade</span></li>
       </ul>
@@ -355,15 +355,47 @@
         <p>Etiqueta individual por peça, impressão em lote e indicador de qual já foi impressa.</p>
       </article>
 
-      <article class="b-card b-wide spot reveal" data-delay="2">
-        <div class="b-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      <article class="b-card b-wide b-vendas spot reveal" data-delay="2">
+        <div class="b-vendas-txt">
+          <div class="b-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Vendas e link do cliente</h3>
+          <p>Clientes, orçamentos e um link público de apresentação com o modelo 3D da obra.</p>
+          <div class="b-benef">
+            <p class="b-benef-lead">Acabe com o mal-entendido entre projeto e execução.</p>
+            <p>Com o 3D na tela, o cliente vê a obra exatamente como ela será executada.</p>
+            <ul>
+              <li>Menos retrabalho: a dúvida surge na apresentação, não na montagem.</li>
+              <li>Aprovação mais rápida: ele entende o projeto sem precisar ler desenho técnico.</li>
+              <li>Direto no celular dele, por um link — sem instalar nada.</li>
+            </ul>
+          </div>
+          <div class="b-mini-link" aria-hidden="true">
+            <span class="lnk">controlepremoldado.com.br/c/<b>obra-acinp</b></span>
+            <span class="seen"><i></i> Aberto 3× · hoje 14:22</span>
+          </div>
         </div>
-        <h3>Vendas e link do cliente</h3>
-        <p>Clientes, orçamentos e um link público de apresentação com o modelo 3D da obra.</p>
-        <div class="b-mini-link" aria-hidden="true">
-          <span class="lnk">controlepremoldado.com.br/c/<b>obra-acinp</b></span>
-          <span class="seen"><i></i> Aberto 3× · hoje 14:22</span>
+        <!-- Celular com a visão do cliente (prints reais, com a marca trocada por "LF Engenharia").
+             Duas telas alternando; nome/logo/telefone/site são HTML por cima da imagem, fácil de trocar. -->
+        <div class="phone phone-mini" role="img" aria-label="Tela do cliente no celular: página da obra com botões para ver o modelo 3D, projetos e orçamentos, e o modelo 3D da obra">
+          <span class="phone-btn btn-vol-up"></span>
+          <span class="phone-btn btn-vol-down"></span>
+          <span class="phone-btn btn-power"></span>
+          <div class="phone-screen">
+            <div class="cli-slide cli-a">
+              <img src="assets/app-cliente-inicio.jpg" alt="" loading="lazy" width="738" height="1600">
+              <img class="cli-logo" src="assets/logo-lf.svg" alt="">
+              <b class="cli-nome">LF ENGENHARIA</b>
+              <span class="cli-contato">(21) 99999-0000<br>www.lfengenharia.com.br</span>
+            </div>
+            <div class="cli-slide cli-b">
+              <img src="assets/app-cliente-3d.jpg" alt="" loading="lazy" width="738" height="1600">
+              <img class="cli-marca-d" src="assets/logo-lf.svg" alt="">
+            </div>
+            <span class="phone-island"></span>
+            <span class="screen-gloss"></span>
+          </div>
         </div>
       </article>
 
@@ -521,7 +553,7 @@
           <span>Pagar o ano à vista <i>(-15%)</i></span>
         </label>
 
-        <a href="https://sistema.controlepremoldado.com.br/login?cadastro=1" class="btn btn-primary btn-block">Começar com 21 dias grátis</a>
+        <a href="https://sistema.controlepremoldado.com.br/login?cadastro=1" class="btn btn-primary btn-block">Começar com 14 dias grátis</a>
         <p class="cr-note">Sem cartão de crédito.</p>
       </aside>
     </div>
@@ -587,7 +619,7 @@
         </div>
         <div class="f-field">
           <label for="contato-campo">Telefone ou e-mail</label>
-          <input type="text" id="contato-campo" name="contato" placeholder="(51) 99999-0000" required autocomplete="tel">
+          <input type="text" id="contato-campo" name="contato" placeholder="(21) 99999-0000" required autocomplete="tel">
         </div>
 
         <p class="f-error" id="formError" hidden></p>
@@ -631,8 +663,9 @@
       </div>
       <div>
         <h4>Empresa</h4>
-        <a href="#contato">Falar com a gente</a>
-        <a href="privacidade.html">Privacidade e Termos de Uso</a>
+        <a href="#contato" data-abrir-contato>Falar com a gente</a>
+        <a href="termos.html">Termos de Uso</a>
+        <a href="privacidade.html">Política de Privacidade</a>
       </div>
     </nav>
   </div>
@@ -642,6 +675,41 @@
     <span>controlepremoldado.com.br</span>
   </div>
 </footer>
+
+<!-- ══════════════ JANELA "FALAR COM A GENTE" ══════════════ -->
+<div class="msg-modal" id="msgModal" role="dialog" aria-modal="true" aria-labelledby="msgTitulo" hidden>
+  <div class="msg-backdrop" data-fechar-contato></div>
+  <div class="msg-card">
+    <button type="button" class="msg-fechar" data-fechar-contato aria-label="Fechar">×</button>
+    <div id="msgFormBox">
+      <h2 id="msgTitulo">Fale com a gente</h2>
+      <p class="msg-sub">Mande sua dúvida ou pedido. A gente responde pelo contato que você deixar.</p>
+      <form id="msgForm" novalidate>
+        <div class="f-field">
+          <label for="msg-nome">Seu nome</label>
+          <input type="text" id="msg-nome" name="nome" maxlength="120" required autocomplete="name">
+        </div>
+        <div class="f-field">
+          <label for="msg-contato">Telefone ou e-mail</label>
+          <input type="text" id="msg-contato" name="contato" maxlength="160" placeholder="(21) 99999-0000" required autocomplete="tel">
+        </div>
+        <div class="f-field">
+          <label for="msg-texto">Mensagem</label>
+          <textarea id="msg-texto" name="mensagem" rows="4" maxlength="2000" required></textarea>
+        </div>
+        <!-- armadilha pra robô: pessoa de verdade nunca vê nem preenche -->
+        <input type="text" name="site" class="msg-isca" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <p class="f-error" id="msgErro" hidden></p>
+        <button type="submit" class="btn btn-primary btn-lg btn-block" id="msgEnviar">Enviar mensagem</button>
+      </form>
+    </div>
+    <div id="msgOk" class="msg-ok" hidden>
+      <h2>Mensagem enviada!</h2>
+      <p class="msg-sub">Recebemos e vamos responder pelo contato que você deixou.</p>
+      <button type="button" class="btn btn-ghost btn-block" data-fechar-contato>Fechar</button>
+    </div>
+  </div>
+</div>
 
 <script src="js/main.js"></script>
 <script src="js/rastreio.js"></script>

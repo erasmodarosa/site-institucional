@@ -318,4 +318,91 @@
       window.location.href = APP_URL + "/login?cadastro=1#" + dadosSensiveis.toString();
     });
   }
+
+  /* ───────────── janela "Falar com a gente" ─────────────
+     Manda a mensagem pra Edge Function site-mensagem (guarda no banco e avisa por e-mail).
+     Sem JavaScript o link continua levando pra seção #contato. */
+  var SUPABASE_URL = "https://cspgbiewlxahnjqehjso.supabase.co";
+  var SUPABASE_ANON_KEY = "sb_publishable_pCI6gwGBpDcDvjNQX1ytnA_bFU6IRjX";
+  var modal = document.getElementById("msgModal");
+  var msgForm = document.getElementById("msgForm");
+
+  if (modal && msgForm) {
+    var msgErro = document.getElementById("msgErro");
+    var msgEnviar = document.getElementById("msgEnviar");
+    var formBox = document.getElementById("msgFormBox");
+    var okBox = document.getElementById("msgOk");
+    var ultimoFoco = null;
+
+    var abrir = function () {
+      ultimoFoco = document.activeElement;
+      formBox.hidden = false;
+      okBox.hidden = true;
+      msgErro.hidden = true;
+      modal.hidden = false;
+      document.body.classList.add("msg-aberta");
+      setTimeout(function () { msgForm.nome.focus(); }, 30);
+    };
+    var fechar = function () {
+      modal.hidden = true;
+      document.body.classList.remove("msg-aberta");
+      if (ultimoFoco && ultimoFoco.focus) ultimoFoco.focus();
+    };
+
+    document.querySelectorAll("[data-abrir-contato]").forEach(function (a) {
+      a.addEventListener("click", function (e) { e.preventDefault(); abrir(); });
+    });
+    modal.querySelectorAll("[data-fechar-contato]").forEach(function (el) {
+      el.addEventListener("click", fechar);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && !modal.hidden) fechar();
+    });
+
+    var mostrarErro = function (texto) { msgErro.textContent = texto; msgErro.hidden = false; };
+
+    msgForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      msgErro.hidden = true;
+      var nome = msgForm.nome.value.trim();
+      var contato = msgForm.contato.value.trim();
+      var mensagem = msgForm.mensagem.value.trim();
+
+      [["nome", nome], ["contato", contato], ["mensagem", mensagem]].forEach(function (par) {
+        msgForm[par[0]].classList.toggle("invalid", !par[1]);
+      });
+      if (!nome || !contato || !mensagem) return mostrarErro("Preencha nome, contato e mensagem.");
+
+      var pareceTelefone = contato.replace(/\D/g, "").length >= 10;
+      var pareceEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contato);
+      if (!pareceTelefone && !pareceEmail) {
+        msgForm.contato.classList.add("invalid");
+        return mostrarErro("Informe um telefone com DDD ou um e-mail válido.");
+      }
+
+      msgEnviar.disabled = true;
+      msgEnviar.textContent = "Enviando…";
+      fetch(SUPABASE_URL + "/functions/v1/site-mensagem", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", apikey: SUPABASE_ANON_KEY },
+        body: JSON.stringify({ nome: nome, contato: contato, mensagem: mensagem, site: msgForm.site.value }),
+      })
+        .then(function (r) {
+          return r.json().catch(function () { return {}; }).then(function (dados) { return { ok: r.ok, dados: dados }; });
+        })
+        .then(function (res) {
+          if (!res.ok) throw new Error(res.dados && res.dados.erro ? res.dados.erro : "");
+          msgForm.reset();
+          formBox.hidden = true;
+          okBox.hidden = false;
+        })
+        .catch(function (err) {
+          mostrarErro(err && err.message ? err.message : "Não foi possível enviar agora. Tente de novo em instantes ou escreva para contato@controlepremoldado.com.br.");
+        })
+        .then(function () {
+          msgEnviar.disabled = false;
+          msgEnviar.textContent = "Enviar mensagem";
+        });
+    });
+  }
 })();

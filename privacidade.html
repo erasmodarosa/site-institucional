@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Privacidade e Termos de Uso — Controle Pré-Moldado</title>
-<meta name="description" content="Política de Privacidade e Termos de Uso do Controle Pré-Moldado.">
+<title>Política de Privacidade — Controle Pré-Moldado</title>
+<meta name="description" content="Política de Privacidade do Controle Pré-Moldado: quais dados coletamos, para quê, com quem compartilhamos e como exercer seus direitos pela LGPD.">
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#06080A">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -12,81 +12,172 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
 <link rel="stylesheet" href="css/style.css">
-<style>
-  .legal-main { max-width: 760px; margin: 0 auto; padding: clamp(110px,14vw,150px) var(--pad) var(--sec-y); }
-  .legal-main h1 { font-family: var(--display); font-weight: 800; font-size: clamp(28px,4vw,40px); color: var(--text); margin: 0 0 8px; }
-  .legal-main .atualizado { color: var(--text-3); font-family: var(--mono); font-size: 13px; margin-bottom: var(--sec-y); }
-  .legal-main h2 { font-family: var(--display); font-weight: 700; font-size: 20px; color: var(--green-bright); margin: 44px 0 12px; }
-  .legal-main h2:first-of-type { margin-top: 0; }
-  .legal-main p, .legal-main li { color: var(--text-2); font-size: 15px; line-height: 1.7; }
-  .legal-main ul { padding-left: 20px; margin: 10px 0; }
-  .legal-main li { margin-bottom: 6px; }
-  .legal-main strong { color: var(--text); }
-  .legal-main a { color: var(--green-bright); }
-  .legal-nota {
-    margin-top: 40px; padding: 16px 18px; border: 1px solid var(--green-line);
-    background: var(--green-soft); border-radius: var(--radius); color: var(--text-2); font-size: 13.5px;
-  }
-  .legal-topo {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 10; padding: 16px var(--pad);
-    background: rgba(6,8,10,.85); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line);
-  }
-  .legal-topo a { color: var(--text-2); text-decoration: none; font-size: 14px; font-family: var(--body); font-weight: 600; }
-  .legal-topo a:hover { color: var(--text); }
-</style>
+<link rel="stylesheet" href="css/legal.css">
 </head>
 <body>
 
-<div class="legal-topo"><a href="index.html">&larr; Voltar ao site</a></div>
+<div class="legal-topo">
+  <a href="index.html">&larr; Voltar ao site</a>
+  <a href="termos.html">Termos de Uso</a>
+</div>
 
 <main class="legal-main">
-  <h1>Privacidade e Termos de Uso</h1>
-  <p class="atualizado">Última atualização: 28 de setembro de 2026</p>
+  <h1>Política de Privacidade</h1>
+  <p class="atualizado">Versão 1.0 · Última atualização: 3 de outubro de 2026</p>
 
-  <h2 id="privacidade">Política de Privacidade</h2>
-  <p>Esta página explica quais dados o <strong>Controle Pré-Moldado</strong> coleta, para quê, e como você pode pedir acesso, correção ou exclusão dos seus dados, em conformidade com a LGPD (Lei Geral de Proteção de Dados).</p>
+  <p class="intro">Esta Política explica, de forma clara, quais dados pessoais o <strong>Controle Pré-Moldado</strong> coleta, por que coleta, com quem compartilha, por quanto tempo guarda e como você pode exercer seus direitos, em conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018 — LGPD) e o Marco Civil da Internet (Lei nº 12.965/2014). Ela vale para o site <strong>controlepremoldado.com.br</strong>, para o aplicativo e para o sistema web em <strong>sistema.controlepremoldado.com.br</strong>.</p>
 
-  <p><strong>Quem somos.</strong> Controle Pré-Moldado é um software de gestão para indústrias de pré-moldados de concreto. Dúvidas sobre seus dados ou sobre o serviço: <a href="mailto:contato@controlepremoldado.com.br">contato@controlepremoldado.com.br</a>.</p>
+  <nav class="legal-indice" aria-label="Índice">
+    <p>Índice</p>
+    <ol>
+      <li><a href="#quem-somos">Quem somos e papéis</a></li>
+      <li><a href="#dados">Dados que coletamos</a></li>
+      <li><a href="#finalidades">Para que usamos os dados</a></li>
+      <li><a href="#bases">Bases legais</a></li>
+      <li><a href="#compartilhamento">Com quem compartilhamos</a></li>
+      <li><a href="#internacional">Transferência internacional</a></li>
+      <li><a href="#retencao">Por quanto tempo guardamos</a></li>
+      <li><a href="#seguranca">Segurança</a></li>
+      <li><a href="#cookies">Cookies e armazenamento local</a></li>
+      <li><a href="#direitos">Seus direitos</a></li>
+      <li><a href="#menores">Crianças e adolescentes</a></li>
+      <li><a href="#terceiros">Links e serviços de terceiros</a></li>
+      <li><a href="#alteracoes">Alterações nesta Política</a></li>
+      <li><a href="#contato">Contato e encarregado</a></li>
+    </ol>
+  </nav>
 
-  <p><strong>Dados que coletamos neste site (controlepremoldado.com.br):</strong></p>
+  <h2 id="quem-somos">1. Quem somos e papéis no tratamento de dados</h2>
+  <p>O Controle Pré-Moldado é um software de gestão para indústrias de pré-moldados de concreto (planejamento de produção, cargas, montagem, qualidade, vendas e relatórios), oferecido por assinatura. Quando esta Política diz “nós”, “nosso” ou “Controle Pré-Moldado”, refere-se ao responsável por esse serviço.</p>
+  <p>Seu papel na LGPD depende de como você usa o serviço:</p>
   <ul>
-    <li>Quando você preenche o formulário de contato: nome, empresa e telefone/e-mail informados.</li>
-    <li>Automaticamente, ao navegar: um identificador anônimo gerado no seu próprio navegador (não é seu nome nem documento), tipo de aparelho, página visitada e a origem do acesso (ex: busca do Google, link direto) — usamos isso só para entender quantas visitas o site recebe e de onde, nunca para identificar você pessoalmente.</li>
+    <li><strong>Controlador, em relação aos dados do site, do cadastro e da cobrança:</strong> decidimos como os dados de visitantes do site, de pessoas que criam conta e de quem contrata a assinatura são tratados.</li>
+    <li><strong>Operador, em relação aos dados que a empresa cliente cadastra no sistema:</strong> obras, peças, fotos, relatórios, usuários, clientes finais e demais informações de produção pertencem à empresa contratante, que é a controladora desses dados. Nós os tratamos apenas para prestar o serviço, seguindo as instruções da empresa e os Termos de Uso.</li>
   </ul>
 
-  <p><strong>Dados que coletamos no aplicativo</strong> (depois que sua empresa contrata o sistema): os dados que sua empresa cadastra para gerir a produção — obras, peças, fotos, relatórios, usuários e clientes vinculados à sua empresa. Esses dados pertencem à empresa contratante; nós apenas os armazenamos e processamos para prestar o serviço.</p>
+  <h2 id="dados">2. Dados que coletamos</h2>
 
-  <p><strong>Para que usamos esses dados:</strong></p>
+  <h3>2.1. Dados que você nos fornece</h3>
+  <div class="legal-tabela-wrap">
+  <table class="legal-tabela">
+    <thead><tr><th>Quando</th><th>Quais dados</th></tr></thead>
+    <tbody>
+      <tr><td>Janela “Falar com a gente” e formulário de contato do site</td><td>Nome, telefone ou e-mail, nome da empresa (no formulário de cadastro rápido) e o texto da mensagem.</td></tr>
+      <tr><td>Criação da conta da empresa</td><td>CNPJ, razão social e dados cadastrais públicos da empresa obtidos a partir do CNPJ (como cidade e estado), nome, e-mail, telefone e senha do administrador. A senha é guardada de forma protegida (criptografada), nunca em texto legível.</td></tr>
+      <tr><td>Convite de usuários</td><td>Nome, telefone e e-mail da pessoa convidada, informados por quem criou o convite.</td></tr>
+      <tr><td>Assinatura e pagamento</td><td>Módulos escolhidos, status da assinatura, volume de produção usado para cobrança variável e identificadores de cliente e de assinatura no processador de pagamentos. <strong>Os dados do cartão são digitados no ambiente seguro do processador de pagamentos e não passam pelos nossos servidores.</strong></td></tr>
+      <tr><td>Suporte</td><td>As mensagens que você envia pelo botão “Suporte” do sistema e os dados necessários para identificar sua empresa.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>2.2. Dados inseridos pela empresa no sistema</h3>
+  <p>Ao usar o sistema, a empresa e seus usuários cadastram informações de trabalho, como obras, categorias e peças, formas, cargas e romaneios, montagem, concretagem e cronogramas, não conformidades e ensaios de qualidade (inclusive <strong>fotos</strong>), arquivos de projeto e modelos 3D, orçamentos e documentos anexados, cadastro de clientes da empresa e relatórios gerados. Pode haver dados pessoais nesses registros, como nome e contato de clientes, motoristas e funcionários. A empresa é responsável por ter base legal para inseri-los (veja os Termos de Uso).</p>
+
+  <h3>2.3. Dados coletados automaticamente</h3>
   <ul>
-    <li>Responder ao seu contato e apresentar o sistema;</li>
-    <li>Processar o cadastro e a cobrança da sua assinatura;</li>
-    <li>Entender o uso do site para melhorá-lo;</li>
-    <li>Cumprir obrigações legais e fiscais.</li>
+    <li><strong>No site:</strong> um identificador aleatório gerado no seu navegador (não é nome nem documento), tipo de aparelho (celular, tablet ou computador), sistema operacional, navegador, página visitada, a origem do acesso (por exemplo, busca ou link direto) e uma <strong>localização aproximada (cidade, estado e país) estimada a partir do seu endereço IP</strong> por um serviço externo consultado pelo seu próprio navegador. Usamos isso para contar visitas e entender de onde elas vêm.</li>
+    <li><strong>No link público de apresentação ao cliente</strong> (endereços do tipo <em>controlepremoldado.com.br/c/…</em>): registramos quando o link é aberto, com data e hora, tipo de aparelho e localização aproximada, para que a empresa que compartilhou o link saiba se e quando foi visualizado.</li>
+    <li><strong>No sistema:</strong> registros técnicos de funcionamento e segurança, como data e hora de acesso, identificação da sessão, tipo de aparelho e navegador, e endereço IP, necessários para manter o serviço seguro e para atender à lei (veja o item 4).</li>
+    <li><strong>Na janela “Falar com a gente”:</strong> além do que você escreve, guardamos o endereço IP e o tipo de navegador para limitar o excesso de mensagens e evitar spam.</li>
   </ul>
 
-  <p><strong>Com quem compartilhamos.</strong> Não vendemos nem alugamos seus dados a terceiros. Usamos prestadores de serviço para operar o sistema — processamento de pagamentos (Stripe) e hospedagem/banco de dados (Supabase) — que têm acesso apenas ao necessário para prestar esses serviços a nós.</p>
+  <h3>2.4. Permissões do aparelho</h3>
+  <p>No aplicativo e no sistema web, podemos pedir acesso à <strong>câmera</strong> (leitura de QR Code das peças e fotos de registro) e à <strong>galeria/arquivos</strong> (para anexar fotos e documentos). Você decide se concede essas permissões e pode revogá-las nas configurações do aparelho ou do navegador; sem elas, os recursos correspondentes deixam de funcionar. Não coletamos sua localização por GPS.</p>
 
-  <p><strong>Seus direitos.</strong> Você pode pedir a qualquer momento para saber quais dados temos sobre você, corrigi-los ou excluí-los, entrando em contato pelo e-mail <a href="mailto:contato@controlepremoldado.com.br">contato@controlepremoldado.com.br</a>.</p>
+  <h2 id="finalidades">3. Para que usamos os dados</h2>
+  <ul>
+    <li>Prestar o serviço contratado, criar e manter contas, controlar permissões e gerar relatórios e documentos;</li>
+    <li>Cobrar a assinatura, inclusive a parte variável calculada pelo volume de concreto das peças registradas, e controlar o período de teste e o acesso;</li>
+    <li>Responder a mensagens, pedidos de suporte e solicitações de contato;</li>
+    <li>Enviar avisos importantes sobre a conta, a cobrança, mudanças relevantes e a segurança do serviço;</li>
+    <li>Proteger o serviço contra fraude, abuso, spam e acessos indevidos;</li>
+    <li>Medir o uso do site e do sistema para corrigir problemas e melhorar o produto;</li>
+    <li>Cumprir obrigações legais, regulatórias e fiscais, e exercer direitos em processos judiciais, administrativos ou arbitrais.</li>
+  </ul>
+  <p>Não vendemos dados pessoais e não os usamos para publicidade de terceiros nem para criar perfis comportamentais.</p>
 
-  <h2 id="termos">Termos de Uso</h2>
-  <p>Ao criar uma conta e usar o Controle Pré-Moldado, sua empresa concorda com estes termos.</p>
+  <h2 id="bases">4. Bases legais</h2>
+  <p>Tratamos dados pessoais apenas quando há uma base legal da LGPD (art. 7º), conforme o caso:</p>
+  <ul>
+    <li><strong>Execução de contrato ou de procedimentos preliminares</strong> (cadastro, conta, assinatura, suporte, geração de relatórios);</li>
+    <li><strong>Cumprimento de obrigação legal ou regulatória</strong> (obrigações fiscais e, no caso dos registros de acesso, o art. 15 do Marco Civil da Internet, que exige guarda por 6 meses);</li>
+    <li><strong>Legítimo interesse</strong> (segurança, prevenção a fraude e spam, estatísticas de uso do site e melhoria do produto), sempre avaliado para não violar seus direitos e expectativas;</li>
+    <li><strong>Consentimento</strong>, quando o pedirmos de forma específica (por exemplo, para permissões do aparelho), podendo ser retirado a qualquer momento;</li>
+    <li><strong>Exercício regular de direitos</strong> em processos.</li>
+  </ul>
 
-  <p><strong>O serviço.</strong> O Controle Pré-Moldado é fornecido por assinatura, com cobrança mensal conforme o plano escolhido, podendo incluir uma parte fixa e uma parte variável por volume de concreto produzido registrado no sistema — os valores atuais estão descritos na página de planos.</p>
+  <h2 id="compartilhamento">5. Com quem compartilhamos</h2>
+  <p>Não vendemos nem alugamos dados pessoais. Compartilhamos o necessário com prestadores de serviço que nos ajudam a operar o Serviço (operadores e suboperadores), cada um com acesso limitado à sua função e sujeito a obrigações de confidencialidade e de proteção de dados. Eles atuam nestas categorias:</p>
+  <ul>
+    <li><strong>Infraestrutura em nuvem e hospedagem:</strong> banco de dados, armazenamento de arquivos, autenticação de usuários e execução do sistema;</li>
+    <li><strong>Processamento de pagamentos:</strong> cobrança e gestão de assinaturas;</li>
+    <li><strong>Comunicação:</strong> envio de e-mails de aviso e de atendimento;</li>
+    <li><strong>Serviços de consulta e apoio ao funcionamento:</strong> consulta a dados públicos de empresas, estimativa de localização aproximada a partir do endereço IP, fontes de letra e visualização de documentos.</li>
+  </ul>
+  <p>Você pode pedir, a qualquer momento, informações sobre as entidades com as quais compartilhamos seus dados, pelo contato do item 14.</p>
+  <p>Também podemos compartilhar dados nestas situações:</p>
+  <ul>
+    <li>com a empresa contratante e seus usuários autorizados, dentro das regras de acesso do sistema (cada empresa só enxerga os próprios dados);</li>
+    <li>com autoridades, quando exigido por lei ou ordem judicial;</li>
+    <li>para proteger direitos nossos, de usuários ou de terceiros;</li>
+    <li>em eventual reorganização societária (como fusão ou venda do negócio), mantidas as proteções desta Política.</li>
+  </ul>
+  <h2 id="internacional">6. Transferência internacional de dados</h2>
+  <p>Alguns dos prestadores acima têm servidores ou operações fora do Brasil, de modo que seus dados podem ser tratados no exterior. Nesses casos, adotamos prestadores que mantêm medidas de segurança e proteção de dados compatíveis com a LGPD e fazemos a transferência com base no art. 33 da lei, por exemplo quando necessária à execução do contrato ou com cláusulas contratuais adequadas.</p>
 
-  <p><strong>Sua conta e seus dados.</strong> Sua empresa é responsável pela veracidade dos dados cadastrados e por manter o acesso de seus usuários sob controle (convites, permissões, desativação de contas quando alguém sai da empresa). Os dados de produção cadastrados pertencem à sua empresa; nós os armazenamos para permitir o uso do sistema e geração de relatórios.</p>
+  <h2 id="retencao">7. Por quanto tempo guardamos os dados</h2>
+  <p>Guardamos os dados pelo tempo necessário para cumprir as finalidades descritas nesta Política e as obrigações legais:</p>
+  <ul>
+    <li><strong>Dados da conta e do sistema:</strong> enquanto a conta da empresa estiver ativa. Depois do encerramento, excluímos ou anonimizamos os dados em prazo razoável, salvo quando a lei ou o exercício de direitos exigir que sejam mantidos por mais tempo.</li>
+    <li><strong>Registros de acesso (data, hora e IP):</strong> por no mínimo 6 meses, conforme o Marco Civil da Internet.</li>
+    <li><strong>Dados de cobrança e fiscais:</strong> pelos prazos exigidos pela legislação tributária e contábil.</li>
+    <li><strong>Mensagens do site e do suporte:</strong> pelo tempo necessário para atender sua solicitação e comprovar o atendimento.</li>
+  </ul>
+  <p>Você pode pedir a exclusão ou a exportação dos seus dados a qualquer momento (veja o item 10).</p>
 
-  <p><strong>Pagamento e cancelamento.</strong> A assinatura é cobrada automaticamente pelo método de pagamento cadastrado. O acesso ao sistema pode ser pausado em caso de pagamento em atraso. Você pode cancelar a qualquer momento entrando em contato — o acesso permanece até o fim do período já pago.</p>
+  <h2 id="seguranca">8. Segurança</h2>
+  <p>Adotamos medidas técnicas e organizacionais razoáveis para proteger os dados, entre elas: conexão criptografada (HTTPS) entre você e o serviço; separação dos dados por empresa, com regras de acesso no banco de dados para que uma empresa não enxergue os dados de outra; controle de acesso por perfil de usuário; proteção das senhas por criptografia; guarda da sessão no aparelho em área protegida quando disponível; limites contra uso abusivo; e acesso restrito dos nossos sistemas às pessoas que precisam dele.</p>
+  <p>Nenhum sistema é totalmente imune a falhas. Se ocorrer um incidente de segurança que possa acarretar risco ou dano relevante aos titulares, comunicaremos os afetados e a Autoridade Nacional de Proteção de Dados (ANPD) nos termos da lei. Você também tem um papel: mantenha sua senha em sigilo, use senhas fortes e avise-nos se suspeitar de acesso indevido à sua conta.</p>
 
-  <p><strong>Disponibilidade.</strong> Fazemos o possível para manter o sistema disponível, mas não garantimos operação ininterrupta; eventuais manutenções serão comunicadas quando possível.</p>
+  <h2 id="cookies">9. Cookies e armazenamento local</h2>
+  <p>Não usamos cookies de publicidade nem ferramentas de rastreamento de terceiros para anúncios. Usamos o <strong>armazenamento local do navegador/aparelho</strong> (localStorage e áreas equivalentes) para:</p>
+  <ul>
+    <li>manter você conectado (sessão de login) e lembrar preferências de uso;</li>
+    <li>guardar o identificador anônimo de visitante do site, usado nas estatísticas de visita.</li>
+  </ul>
+  <p>Você pode limpar esses dados nas configurações do navegador; isso desconecta você do sistema e gera um novo identificador de visitante.</p>
 
-  <p><strong>Alterações.</strong> Podemos atualizar estes termos e esta política; mudanças relevantes serão comunicadas por e-mail ou aviso no sistema.</p>
+  <h2 id="direitos">10. Seus direitos</h2>
+  <p>Nos termos do art. 18 da LGPD, você pode pedir, a qualquer momento:</p>
+  <ul>
+    <li>confirmação de que tratamos seus dados e acesso a eles;</li>
+    <li>correção de dados incompletos, inexatos ou desatualizados;</li>
+    <li>anonimização, bloqueio ou eliminação de dados desnecessários, excessivos ou tratados em desconformidade com a lei;</li>
+    <li>portabilidade dos dados a outro fornecedor, conforme regulamentação da ANPD;</li>
+    <li>eliminação dos dados tratados com base no seu consentimento;</li>
+    <li>informação sobre com quais entidades compartilhamos seus dados;</li>
+    <li>informação sobre a possibilidade de não consentir e sobre as consequências da recusa;</li>
+    <li>revogação do consentimento;</li>
+    <li>oposição a tratamento feito sem consentimento, quando houver descumprimento da lei;</li>
+    <li>revisão de decisões tomadas unicamente de forma automatizada que afetem seus interesses.</li>
+  </ul>
+  <p>Para exercer esses direitos, escreva para <a href="mailto:contato@controlepremoldado.com.br">contato@controlepremoldado.com.br</a>. Podemos pedir informações para confirmar que o pedido é seu. Responderemos no prazo previsto em lei.</p>
+  <p><strong>Se você é usuário de uma empresa cliente</strong> (funcionário, cliente final ou convidado), os dados que a empresa cadastrou são controlados por ela. Nesse caso, o pedido deve ser feito primeiro à própria empresa; podemos ajudá-la a atender você. Se não ficar satisfeito com a nossa resposta, você também pode apresentar reclamação à <strong>Autoridade Nacional de Proteção de Dados (ANPD)</strong>.</p>
 
-  <!-- Só e-mail por enquanto — sem telefone real ainda, e um número falso de exemplo passaria
-       mais confiança do que devia (parece funcionar, mas não funciona). Acrescentar aqui quando
-       tiver um de verdade. -->
-  <p><strong>Contato:</strong> <a href="mailto:contato@controlepremoldado.com.br">contato@controlepremoldado.com.br</a></p>
+  <h2 id="menores">11. Crianças e adolescentes</h2>
+  <p>O serviço é voltado a empresas e profissionais. Não é destinado a menores de 18 anos e não coletamos dados de crianças ou adolescentes de forma intencional. Se você acredita que um menor nos forneceu dados, fale conosco para que possamos excluí-los.</p>
 
-  <div class="legal-nota">Este texto é um resumo em linguagem simples das práticas do Controle Pré-Moldado. Para contratos com exigências jurídicas específicas, recomendamos revisão por um advogado antes da assinatura.</div>
+  <h2 id="terceiros">12. Links e serviços de terceiros</h2>
+  <p>O site e o sistema podem ter links para páginas de terceiros. Elas têm políticas próprias, pelas quais não somos responsáveis. Recomendamos ler essas políticas antes de fornecer dados nesses ambientes.</p>
+
+  <h2 id="alteracoes">13. Alterações nesta Política</h2>
+  <p>Podemos atualizar esta Política para refletir mudanças no serviço ou na lei. A data de “última atualização” fica no topo desta página. Quando a mudança for relevante, avisaremos por e-mail ou por aviso no sistema. Se continuar usando o serviço depois do aviso, a versão atualizada passa a valer, sem prejuízo dos seus direitos.</p>
+
+  <h2 id="contato">14. Contato e encarregado de dados</h2>
+  <p>Para dúvidas sobre esta Política, pedidos relativos aos seus dados ou para falar com o encarregado pelo tratamento de dados pessoais (DPO): <a href="mailto:contato@controlepremoldado.com.br">contato@controlepremoldado.com.br</a>.</p>
+  <p>Veja também os nossos <a href="termos.html">Termos de Uso</a>.</p>
+
 </main>
 
 </body>

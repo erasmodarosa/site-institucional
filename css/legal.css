@@ -1,0 +1,34 @@
+/* Páginas legais (Termos de Uso e Política de Privacidade) */
+.legal-topo {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 10; padding: 16px var(--pad);
+  display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  background: rgba(6,8,10,.85); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line);
+}
+.legal-topo a { color: var(--text-2); text-decoration: none; font-size: 14px; font-family: var(--body); font-weight: 600; }
+.legal-topo a:hover { color: var(--text); }
+
+.legal-main { max-width: 780px; margin: 0 auto; padding: clamp(110px,14vw,150px) var(--pad) var(--sec-y); }
+.legal-main h1 { font-family: var(--display); font-weight: 800; font-size: clamp(28px,4vw,40px); color: var(--text); margin: 0 0 8px; }
+.legal-main .atualizado { color: var(--text-3); font-family: var(--mono); font-size: 13px; margin: 0 0 28px; }
+.legal-main .intro { font-size: 16px; }
+.legal-main h2 { font-family: var(--display); font-weight: 700; font-size: 20px; color: var(--green-bright); margin: 44px 0 12px; scroll-margin-top: 90px; }
+.legal-main h3 { font-family: var(--display); font-weight: 700; font-size: 16px; color: var(--text); margin: 24px 0 8px; }
+.legal-main p, .legal-main li { color: var(--text-2); font-size: 15px; line-height: 1.75; }
+.legal-main ul, .legal-main ol { padding-left: 22px; margin: 10px 0; }
+.legal-main li { margin-bottom: 6px; }
+.legal-main strong { color: var(--text); }
+.legal-main a { color: var(--green-bright); }
+
+.legal-indice {
+  margin: 0 0 8px; padding: 18px 22px; border: 1px solid var(--line); border-radius: var(--radius);
+  background: rgba(255,255,255,.02);
+}
+.legal-indice p { margin: 0 0 8px; font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--text-3); }
+.legal-indice ol { margin: 0; columns: 2; column-gap: 28px; }
+.legal-indice li { margin-bottom: 4px; font-size: 14px; break-inside: avoid; }
+@media (max-width: 620px) { .legal-indice ol { columns: 1; } }
+
+.legal-tabela { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+.legal-tabela th, .legal-tabela td { text-align: left; vertical-align: top; padding: 10px 12px; border: 1px solid var(--line); color: var(--text-2); line-height: 1.55; }
+.legal-tabela th { background: rgba(255,255,255,.03); color: var(--text); font-weight: 600; }
+.legal-tabela-wrap { overflow-x: auto; }
