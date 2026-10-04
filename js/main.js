@@ -105,12 +105,39 @@
       if (elPainelDesc) elPainelDesc.textContent = atual.getAttribute("data-desc");
     }
 
+    // Celular: a seção não é mais fixada na tela (ver CSS), então não há rolagem pra "dirigir" a
+    // animação — as etapas avançam sozinhas, uma por vez, quando a seção aparece na tela.
+    var mqCelular = window.matchMedia("(max-width: 860px)");
+    var rodouAutoRastreio = false;
+    function rodaAutoRastreio() {
+      if (rodouAutoRastreio) return;
+      rodouAutoRastreio = true;
+      var i = 0;
+      aplicaEtapa(0);
+      var t = setInterval(function () {
+        i += 1;
+        aplicaEtapa(i);
+        if (i >= totalNos - 1) clearInterval(t);
+      }, 900);
+    }
+    if (!reduz && "IntersectionObserver" in window) {
+      new IntersectionObserver(function (ents, ob) {
+        ents.forEach(function (e) {
+          if (e.isIntersecting && mqCelular.matches) { rodaAutoRastreio(); ob.disconnect(); }
+        });
+      }, { threshold: 0.45 }).observe(trilhaRastreio);
+    }
+
     if (reduz) {
       aplicaEtapa(totalNos - 1);
     } else {
       var atualizandoRastreio = false;
       function atualizaRastreio() {
         atualizandoRastreio = false;
+        if (mqCelular.matches) { // no celular quem anima é rodaAutoRastreio()
+          if (ultimoIndiceRastreio < 0) aplicaEtapa(0);
+          return;
+        }
         var rect = trilhaRastreio.getBoundingClientRect();
         var percursoTotal = rect.height - window.innerHeight;
         var progresso = percursoTotal > 0 ? Math.min(1, Math.max(0, -rect.top / percursoTotal)) : 0;

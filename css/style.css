@@ -935,7 +935,11 @@ a { color: inherit; text-decoration: none; }
 .rt-panel p { margin: 0; font-family: var(--mono); font-size: 0.85rem; color: var(--text-2); }
 
 @media (max-width: 860px) {
-  .rastreio-track { height: 200vh; }
+  /* Celular: sem a seção "fixada" na tela — ela ocupava 200% da altura da tela só pra animar
+     com a rolagem, deixando ~1.300px de vazio. Agora ocupa só o tamanho do conteúdo, e a
+     animação das etapas roda sozinha quando a seção aparece (ver js/main.js). */
+  .rastreio-track { height: auto; }
+  .rastreio-pin { position: static; height: auto; padding-block: var(--sec-y); }
   .rt-track { overflow-x: auto; padding: 8px 4px 14px; }
   .rt-line { min-width: 640px; }
   /* Largura fixa (não left+right) — aqui a linha precisa acompanhar o
@@ -959,6 +963,14 @@ a { color: inherit; text-decoration: none; }
   .rastreio-pin .sec-head { margin-bottom: 16px; }
   .rastreio-pin .rt-stepper { margin-top: 18px; }
   .rastreio-pin .rt-panel { margin-top: 16px; padding: 16px 20px; }
+}
+/* Celular: não está mais fixada na tela, então não precisa esconder o parágrafo nem apertar o
+   espaçamento por causa da altura da janela (a regra acima era só pro modo fixado). */
+@media (max-width: 860px) {
+  .rastreio-pin .lead { display: block; }
+  .rastreio-pin .sec-head { margin-bottom: clamp(20px, 5vw, 28px); }
+  .rastreio-pin .rt-stepper { margin-top: 24px; }
+  .rastreio-pin .rt-panel { margin-top: 22px; padding: 20px; }
 }
 
 /* ═══════════ PLANOS / CALCULADORA ═══════════ */
