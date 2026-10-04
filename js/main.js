@@ -432,4 +432,20 @@
         });
     });
   }
+
+  /* ───────────── origem: campanha de e-mail ─────────────
+     Os links dos e-mails de divulgação trazem ?c=<código do contato>. Avisa o painel interno que
+     essa pessoa chegou (uma vez por aba), sem guardar nada dela no navegador nem no site. */
+  try {
+    var codigoCampanha = new URLSearchParams(window.location.search).get("c");
+    if (codigoCampanha && /^[a-f0-9]{16}$/.test(codigoCampanha) && !sessionStorage.getItem("cp_campanha_" + codigoCampanha)) {
+      sessionStorage.setItem("cp_campanha_" + codigoCampanha, "1");
+      fetch(SUPABASE_URL + "/functions/v1/campanha-evento", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", apikey: SUPABASE_ANON_KEY },
+        body: JSON.stringify({ a: "c", t: codigoCampanha }),
+        keepalive: true,
+      }).catch(function () {});
+    }
+  } catch (e) { /* navegador sem sessionStorage/URLSearchParams: segue sem medir */ }
 })();
