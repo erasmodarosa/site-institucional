@@ -19,8 +19,8 @@
   /* Preencher depois de criar a conversão no Google Ads:
        GOOGLE_ADS_ID      → "AW-XXXXXXXXX"
        GOOGLE_ADS_ROTULO  → o rótulo da conversão "Testar o app" (ex: "AbC-D_efG-h12_34-567") */
-  var GOOGLE_ADS_ID = "";
-  var GOOGLE_ADS_ROTULO = "";
+  var GOOGLE_ADS_ID = "AW-458501349";
+  var GOOGLE_ADS_ROTULO = "PSE4CJeu4JQdEOXZ0NoB";
 
   if (!GOOGLE_ADS_ID) return;
 
