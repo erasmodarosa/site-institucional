@@ -424,7 +424,7 @@
           okBox.hidden = false;
         })
         .catch(function (err) {
-          mostrarErro(err && err.message ? err.message : "Não foi possível enviar agora. Tente de novo em instantes ou escreva para contato@controlepremoldado.com.br.");
+          mostrarErro(err && err.message ? err.message : "Não foi possível enviar agora. Tente de novo em instantes ou escreva para suporte@controlepremoldado.com.br.");
         })
         .then(function () {
           msgEnviar.disabled = false;
