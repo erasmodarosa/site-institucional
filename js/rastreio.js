@@ -89,11 +89,14 @@
   }
 
   // Tempo na página: só se sabe quando a pessoa sai, então é mandado num segundo passo, de volta
-  // pro MESMO registro (daí guardar o id devolvido por registrar_acesso_site_institucional).
+  // pro MESMO registro. O id é gerado AQUI, sem nenhuma chamada de rede, pra já estar pronto desde
+  // o primeiro instante da página — se esperasse a resposta de registrar_acesso_site_institucional
+  // (que só volta depois da geolocalização), alguém saindo rápido perdia a duração: o
+  // "pagehide"/"visibilitychange" disparava antes do id existir.
   // sendBeacon (não fetch) porque é o único jeito garantido de completar o envio quando a aba já
   // está fechando — nesse momento o navegador pode cancelar qualquer fetch em andamento.
   var inicio = Date.now();
-  var idAcesso = null;
+  var idAcesso = typeof crypto !== "undefined" && crypto.randomUUID ? crypto.randomUUID() : null;
   var duracaoEnviada = false;
 
   function enviarDuracao() {
@@ -141,6 +144,7 @@
         Authorization: "Bearer " + SUPABASE_ANON_KEY,
       },
       body: JSON.stringify({
+        p_id: idAcesso,
         p_dispositivo_id: dispositivoId,
         p_pagina: window.location.pathname + window.location.hash,
         p_dispositivo_tipo: info.tipo,
@@ -151,15 +155,8 @@
         p_regiao: loc.regiao,
         p_pais: loc.pais,
       }),
-    })
-      .then(function (resposta) {
-        return resposta.ok ? resposta.json() : null;
-      })
-      .then(function (id) {
-        if (id) idAcesso = id;
-      })
-      .catch(function () {
-        // Silencioso de propósito — rastreio nunca deve atrapalhar a navegação de quem acessa.
-      });
+    }).catch(function () {
+      // Silencioso de propósito — rastreio nunca deve atrapalhar a navegação de quem acessa.
+    });
   });
 })();
