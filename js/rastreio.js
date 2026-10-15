@@ -88,6 +88,45 @@
     });
   }
 
+  // Tempo na página: só se sabe quando a pessoa sai, então é mandado num segundo passo, de volta
+  // pro MESMO registro (daí guardar o id devolvido por registrar_acesso_site_institucional).
+  // sendBeacon (não fetch) porque é o único jeito garantido de completar o envio quando a aba já
+  // está fechando — nesse momento o navegador pode cancelar qualquer fetch em andamento.
+  var inicio = Date.now();
+  var idAcesso = null;
+  var duracaoEnviada = false;
+
+  function enviarDuracao() {
+    if (duracaoEnviada || !idAcesso) return;
+    duracaoEnviada = true;
+    var duracaoSegundos = Math.round((Date.now() - inicio) / 1000);
+    var corpo = JSON.stringify({ p_id: idAcesso, p_duracao_segundos: duracaoSegundos });
+    var enviado = false;
+    if (navigator.sendBeacon) {
+      enviado = navigator.sendBeacon(
+        SUPABASE_URL + "/rest/v1/rpc/atualizar_duracao_acesso_site_institucional?apikey=" + SUPABASE_ANON_KEY,
+        new Blob([corpo], { type: "application/json" })
+      );
+    }
+    if (!enviado) {
+      // Navegador sem sendBeacon (raro) — keepalive deixa o fetch sobreviver um pouco além do
+      // unload, sem garantia total, mas melhor que nada.
+      fetch(SUPABASE_URL + "/rest/v1/rpc/atualizar_duracao_acesso_site_institucional", {
+        method: "POST",
+        keepalive: true,
+        headers: { "Content-Type": "application/json", apikey: SUPABASE_ANON_KEY, Authorization: "Bearer " + SUPABASE_ANON_KEY },
+        body: corpo,
+      }).catch(function () {});
+    }
+  }
+
+  // "pagehide" cobre fechar aba/navegar pra fora; "visibilitychange" pra hidden cobre trocar de
+  // aba ou minimizar — manda no que vier primeiro, só uma vez (duracaoEnviada trava o reenvio).
+  window.addEventListener("pagehide", enviarDuracao);
+  document.addEventListener("visibilitychange", function () {
+    if (document.visibilityState === "hidden") enviarDuracao();
+  });
+
   var dispositivoId = obterDispositivoId();
   if (!dispositivoId) return;
 
@@ -112,8 +151,15 @@
         p_regiao: loc.regiao,
         p_pais: loc.pais,
       }),
-    }).catch(function () {
-      // Silencioso de propósito — rastreio nunca deve atrapalhar a navegação de quem acessa.
-    });
+    })
+      .then(function (resposta) {
+        return resposta.ok ? resposta.json() : null;
+      })
+      .then(function (id) {
+        if (id) idAcesso = id;
+      })
+      .catch(function () {
+        // Silencioso de propósito — rastreio nunca deve atrapalhar a navegação de quem acessa.
+      });
   });
 })();
