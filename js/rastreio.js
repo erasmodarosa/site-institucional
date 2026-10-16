@@ -93,8 +93,11 @@
   // o primeiro instante da página — se esperasse a resposta de registrar_acesso_site_institucional
   // (que só volta depois da geolocalização), alguém saindo rápido perdia a duração: o
   // "pagehide"/"visibilitychange" disparava antes do id existir.
-  // sendBeacon (não fetch) porque é o único jeito garantido de completar o envio quando a aba já
-  // está fechando — nesse momento o navegador pode cancelar qualquer fetch em andamento.
+  // fetch com keepalive (NÃO sendBeacon) — sendBeacon com corpo JSON exige checagem de CORS
+  // (preflight) que o próprio sendBeacon não suporta: o navegador aceita a chamada (sem erro
+  // nenhum no console) mas descarta o envio por trás dos panos, silenciosamente. keepalive existe
+  // exatamente pra esse caso (deixa o fetch sobreviver ao fechamento da aba) e passa por CORS do
+  // jeito normal.
   var inicio = Date.now();
   var idAcesso = typeof crypto !== "undefined" && crypto.randomUUID ? crypto.randomUUID() : null;
   var duracaoEnviada = false;
@@ -103,24 +106,12 @@
     if (duracaoEnviada || !idAcesso) return;
     duracaoEnviada = true;
     var duracaoSegundos = Math.round((Date.now() - inicio) / 1000);
-    var corpo = JSON.stringify({ p_id: idAcesso, p_duracao_segundos: duracaoSegundos });
-    var enviado = false;
-    if (navigator.sendBeacon) {
-      enviado = navigator.sendBeacon(
-        SUPABASE_URL + "/rest/v1/rpc/atualizar_duracao_acesso_site_institucional?apikey=" + SUPABASE_ANON_KEY,
-        new Blob([corpo], { type: "application/json" })
-      );
-    }
-    if (!enviado) {
-      // Navegador sem sendBeacon (raro) — keepalive deixa o fetch sobreviver um pouco além do
-      // unload, sem garantia total, mas melhor que nada.
-      fetch(SUPABASE_URL + "/rest/v1/rpc/atualizar_duracao_acesso_site_institucional", {
-        method: "POST",
-        keepalive: true,
-        headers: { "Content-Type": "application/json", apikey: SUPABASE_ANON_KEY, Authorization: "Bearer " + SUPABASE_ANON_KEY },
-        body: corpo,
-      }).catch(function () {});
-    }
+    fetch(SUPABASE_URL + "/rest/v1/rpc/atualizar_duracao_acesso_site_institucional", {
+      method: "POST",
+      keepalive: true,
+      headers: { "Content-Type": "application/json", apikey: SUPABASE_ANON_KEY, Authorization: "Bearer " + SUPABASE_ANON_KEY },
+      body: JSON.stringify({ p_id: idAcesso, p_duracao_segundos: duracaoSegundos }),
+    }).catch(function () {});
   }
 
   // "pagehide" cobre fechar aba/navegar pra fora; "visibilitychange" pra hidden cobre trocar de
